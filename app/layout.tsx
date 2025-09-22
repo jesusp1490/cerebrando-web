@@ -6,7 +6,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
 import { Suspense } from "react"
-import "./globals.css"
+import "@/styles/globals.css"
 
 const outfit = Outfit({
   subsets: ["latin"],
