@@ -12,38 +12,14 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/hooks/use-toast"
-import { Mail, Instagram, Youtube, Video, Send, CheckCircle } from "lucide-react"
+import { Mail, Send, CheckCircle } from "lucide-react"
 import { fadeInUp, staggerContainer, fadeInStagger } from "@/lib/animations"
 import { siteConfig } from "@/config/site"
 
-/**
- * HOW TO CHOOSE ICON COLORS:
- * - Set ICON_PALETTE to "brand"  -> all icons in brand accent (#BC782E)
- * - Set ICON_PALETTE to "platform" -> each icon uses its official color
- */
-const ICON_PALETTE: "brand" | "platform" = "platform"
+// Logos oficiales
+import { SiInstagram, SiTiktok, SiYoutube } from "react-icons/si"
 
-// Brand accent (CTA)
-const BRAND_ACCENT = "#BC782E"
-
-// Official platform colors
-const PLATFORM_COLORS = {
-  email: "#333333",
-  instagram: "#E1306C",
-  tiktok: "#010101", // (you can also try accent shades: #69C9D0 or #EE1D52)
-  youtube: "#FF0000",
-}
-
-// Consistent icon sizing
-const ICON_WRAPPER = "mx-auto w-16 h-16 rounded-full flex items-center justify-center shadow-sm"
-const ICON_SIZE = 28 // px (lucide ignores tailwind text-* for size, so we set width/height props)
-
-/**
- * Helper to resolve icon color depending on palette
- */
-function pickColor(kind: keyof typeof PLATFORM_COLORS) {
-  return ICON_PALETTE === "brand" ? BRAND_ACCENT : PLATFORM_COLORS[kind]
-}
+type IconCmp = React.ComponentType<{ size?: number; className?: string }>
 
 export function Contact() {
   const ref = useRef(null)
@@ -77,34 +53,41 @@ export function Contact() {
     }, 3000)
   }
 
-  const contactMethods = [
+  const contactMethods: Array<{
+    key: "email" | "instagram" | "tiktok" | "youtube"
+    icon: IconCmp
+    title: string
+    value: string
+    href: string
+    description: string
+  }> = [
     {
-      key: "email" as const,
-      icon: Mail,
+      key: "email",
+      icon: Mail as unknown as IconCmp,
       title: "Email",
       value: siteConfig.links.email,
       href: `mailto:${siteConfig.links.email}`,
       description: "Escríbeme directamente",
     },
     {
-      key: "instagram" as const,
-      icon: Instagram,
+      key: "instagram",
+      icon: SiInstagram,
       title: "Instagram",
       value: "@cerebrando",
       href: siteConfig.links.instagram,
       description: "Sígueme para contenido diario",
     },
     {
-      key: "tiktok" as const,
-      icon: Video, // Si más adelante instalas react-icons, puedes usar SiTiktok
+      key: "tiktok",
+      icon: SiTiktok,
       title: "TikTok",
       value: "@cerebrando",
       href: siteConfig.links.tiktok,
       description: "Tips rápidos de neurociencia",
     },
     {
-      key: "youtube" as const,
-      icon: Youtube,
+      key: "youtube",
+      icon: SiYoutube,
       title: "YouTube",
       value: "@cerebrando",
       href: siteConfig.links.youtube,
@@ -135,29 +118,15 @@ export function Contact() {
 
           {/* Contact methods */}
           <motion.div variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {contactMethods.map((method, index) => {
+            {contactMethods.map((method) => {
               const Icon = method.icon
-              const color = pickColor(method.key)
               return (
                 <motion.div key={method.key} variants={fadeInStagger}>
                   <Card className="group h-full border-border hover:border-brand-primary/30 transition-all duration-300 hover:shadow-lg">
                     <CardContent className="p-6 text-center space-y-4">
-                      {/* Bigger icon + dynamic color */}
-                      <div
-                        className={`${ICON_WRAPPER}`}
-                        style={{
-                          backgroundColor:
-                            ICON_PALETTE === "brand" ? "rgba(188, 120, 46, 0.10)" : "rgba(0,0,0,0.04)",
-                          border: `1px solid ${ICON_PALETTE === "brand" ? "rgba(188,120,46,.25)" : "rgba(0,0,0,.08)"}`,
-                        }}
-                        aria-hidden="true"
-                      >
-                        <Icon
-                          width={ICON_SIZE}
-                          height={ICON_SIZE}
-                          style={{ color }}
-                          className="transition-transform duration-300 group-hover:scale-110"
-                        />
+                      {/* Icono oficial + grande + color de marca */}
+                      <div className="mx-auto w-16 h-16 rounded-full bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center shadow-sm group-hover:bg-brand-primary/20 transition-colors">
+                        <Icon size={34} className="text-brand-accent transition-transform duration-300 group-hover:scale-110" />
                       </div>
 
                       <div className="space-y-2">
@@ -167,8 +136,7 @@ export function Contact() {
                           href={method.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-block font-medium transition-colors"
-                          style={{ color }}
+                          className="inline-block font-medium text-brand-accent hover:text-brand-accent/80 transition-colors"
                           aria-label={`${method.title}: ${method.value}`}
                         >
                           {method.value}

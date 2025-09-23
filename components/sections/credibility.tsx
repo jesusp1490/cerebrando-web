@@ -9,6 +9,11 @@ import { Building2, Award, ChevronLeft, ChevronRight, Star } from "lucide-react"
 import { fadeInUp, staggerContainer, fadeInStagger } from "@/lib/animations"
 import Image from "next/image"
 
+const ICON_COLOR = "#BC782E" // color de marca coherente
+const ICON_SIZE = 34
+const ICON_WRAPPER =
+  "mx-auto w-16 h-16 rounded-full bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center shadow-sm group-hover:bg-brand-primary/20 transition-colors"
+
 export function Credibility() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
@@ -103,25 +108,32 @@ export function Credibility() {
 
           {/* Credentials */}
           <motion.div variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {credentials.map((credential, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInStagger}
-                className="group p-6 rounded-2xl bg-background border border-border hover:border-brand-primary/30 transition-all duration-300 hover:shadow-lg"
-              >
-                <div className="text-center space-y-4">
-                  {/* Logo placeholder */}
-                  <div className="mx-auto w-16 h-16 rounded-full bg-brand-primary/10 flex items-center justify-center group-hover:bg-brand-primary/20 transition-colors">
-                    <credential.icon className="h-8 w-8 text-brand-primary" />
-                  </div>
+            {credentials.map((credential, index) => {
+              const Icon = credential.icon
+              return (
+                <motion.div
+                  key={index}
+                  variants={fadeInStagger}
+                  className="group p-6 rounded-2xl bg-background border border-border hover:border-brand-primary/30 transition-all duration-300 hover:shadow-lg"
+                >
+                  <div className="text-center space-y-4">
+                    {/* Icono coherente (tamaño y color) */}
+                    <div className={ICON_WRAPPER} aria-hidden="true">
+                      <Icon
+                        size={ICON_SIZE}
+                        style={{ color: ICON_COLOR }}
+                        className="transition-transform duration-300 group-hover:scale-110"
+                      />
+                    </div>
 
-                  <div className="space-y-2">
-                    <h3 className="font-semibold text-foreground leading-tight">{credential.title}</h3>
-                    <p className="text-sm text-muted-foreground">{credential.description}</p>
+                    <div className="space-y-2">
+                      <h3 className="font-semibold text-foreground leading-tight">{credential.title}</h3>
+                      <p className="text-sm text-muted-foreground">{credential.description}</p>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              )
+            })}
           </motion.div>
 
           {/* Testimonials carousel */}
@@ -150,10 +162,10 @@ export function Credibility() {
 
                     {/* Content */}
                     <div className="flex-1 text-center lg:text-left space-y-4">
-                      {/* Stars */}
+                      {/* Stars (coherentes en color) */}
                       <div className="flex justify-center lg:justify-start space-x-1">
                         {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                          <Star key={i} className="h-5 w-5 fill-brand-accent text-brand-accent" />
+                          <Star key={i} size={18} fill={ICON_COLOR} stroke={ICON_COLOR} />
                         ))}
                       </div>
 
@@ -165,7 +177,9 @@ export function Credibility() {
                       {/* Attribution */}
                       <div className="space-y-1">
                         <div className="font-semibold text-foreground">{testimonials[currentTestimonial].name}</div>
-                        <div className="text-sm text-brand-accent">{testimonials[currentTestimonial].role}</div>
+                        <div className="text-sm" style={{ color: ICON_COLOR }}>
+                          {testimonials[currentTestimonial].role}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -182,6 +196,7 @@ export function Credibility() {
                     <button
                       key={index}
                       onClick={() => setCurrentTestimonial(index)}
+                      aria-label={`Ir al testimonio ${index + 1}`}
                       className={`w-2 h-2 rounded-full transition-colors ${
                         index === currentTestimonial ? "bg-brand-accent" : "bg-border"
                       }`}
