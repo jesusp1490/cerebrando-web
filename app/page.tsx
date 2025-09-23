@@ -9,6 +9,7 @@ import { Credibility } from "@/components/sections/credibility"
 import { Contact } from "@/components/sections/contact"
 import { Footer } from "@/components/sections/footer"
 
+
 export default function HomePage() {
   return (
     <>

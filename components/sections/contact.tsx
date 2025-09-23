@@ -16,6 +16,35 @@ import { Mail, Instagram, Youtube, Video, Send, CheckCircle } from "lucide-react
 import { fadeInUp, staggerContainer, fadeInStagger } from "@/lib/animations"
 import { siteConfig } from "@/config/site"
 
+/**
+ * HOW TO CHOOSE ICON COLORS:
+ * - Set ICON_PALETTE to "brand"  -> all icons in brand accent (#BC782E)
+ * - Set ICON_PALETTE to "platform" -> each icon uses its official color
+ */
+const ICON_PALETTE: "brand" | "platform" = "platform"
+
+// Brand accent (CTA)
+const BRAND_ACCENT = "#BC782E"
+
+// Official platform colors
+const PLATFORM_COLORS = {
+  email: "#333333",
+  instagram: "#E1306C",
+  tiktok: "#010101", // (you can also try accent shades: #69C9D0 or #EE1D52)
+  youtube: "#FF0000",
+}
+
+// Consistent icon sizing
+const ICON_WRAPPER = "mx-auto w-16 h-16 rounded-full flex items-center justify-center shadow-sm"
+const ICON_SIZE = 28 // px (lucide ignores tailwind text-* for size, so we set width/height props)
+
+/**
+ * Helper to resolve icon color depending on palette
+ */
+function pickColor(kind: keyof typeof PLATFORM_COLORS) {
+  return ICON_PALETTE === "brand" ? BRAND_ACCENT : PLATFORM_COLORS[kind]
+}
+
 export function Contact() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
@@ -32,11 +61,7 @@ export function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-
-    // Simulate form submission (no backend)
     await new Promise((resolve) => setTimeout(resolve, 1500))
-
-    console.log("Form submitted:", formData)
     setIsSubmitting(false)
     setIsSubmitted(true)
 
@@ -45,7 +70,6 @@ export function Contact() {
       description: "Gracias por contactar. Te responderé pronto.",
     })
 
-    // Reset form after 3 seconds
     setTimeout(() => {
       setIsSubmitted(false)
       setFormData({ name: "", email: "", message: "" })
@@ -55,6 +79,7 @@ export function Contact() {
 
   const contactMethods = [
     {
+      key: "email" as const,
       icon: Mail,
       title: "Email",
       value: siteConfig.links.email,
@@ -62,6 +87,7 @@ export function Contact() {
       description: "Escríbeme directamente",
     },
     {
+      key: "instagram" as const,
       icon: Instagram,
       title: "Instagram",
       value: "@cerebrando",
@@ -69,13 +95,15 @@ export function Contact() {
       description: "Sígueme para contenido diario",
     },
     {
-      icon: Video,
+      key: "tiktok" as const,
+      icon: Video, // Si más adelante instalas react-icons, puedes usar SiTiktok
       title: "TikTok",
       value: "@cerebrando",
       href: siteConfig.links.tiktok,
       description: "Tips rápidos de neurociencia",
     },
     {
+      key: "youtube" as const,
       icon: Youtube,
       title: "YouTube",
       value: "@cerebrando",
@@ -107,29 +135,50 @@ export function Contact() {
 
           {/* Contact methods */}
           <motion.div variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {contactMethods.map((method, index) => (
-              <motion.div key={index} variants={fadeInStagger}>
-                <Card className="group h-full border-border hover:border-brand-primary/30 transition-all duration-300 hover:shadow-lg">
-                  <CardContent className="p-6 text-center space-y-4">
-                    <div className="mx-auto w-12 h-12 rounded-full bg-brand-primary/10 flex items-center justify-center group-hover:bg-brand-primary/20 transition-colors">
-                      <method.icon className="h-6 w-6 text-brand-primary" />
-                    </div>
-                    <div className="space-y-2">
-                      <h3 className="font-semibold text-foreground">{method.title}</h3>
-                      <p className="text-sm text-muted-foreground">{method.description}</p>
-                      <a
-                        href={method.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block text-brand-accent hover:text-brand-accent/80 font-medium transition-colors"
+            {contactMethods.map((method, index) => {
+              const Icon = method.icon
+              const color = pickColor(method.key)
+              return (
+                <motion.div key={method.key} variants={fadeInStagger}>
+                  <Card className="group h-full border-border hover:border-brand-primary/30 transition-all duration-300 hover:shadow-lg">
+                    <CardContent className="p-6 text-center space-y-4">
+                      {/* Bigger icon + dynamic color */}
+                      <div
+                        className={`${ICON_WRAPPER}`}
+                        style={{
+                          backgroundColor:
+                            ICON_PALETTE === "brand" ? "rgba(188, 120, 46, 0.10)" : "rgba(0,0,0,0.04)",
+                          border: `1px solid ${ICON_PALETTE === "brand" ? "rgba(188,120,46,.25)" : "rgba(0,0,0,.08)"}`,
+                        }}
+                        aria-hidden="true"
                       >
-                        {method.value}
-                      </a>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+                        <Icon
+                          width={ICON_SIZE}
+                          height={ICON_SIZE}
+                          style={{ color }}
+                          className="transition-transform duration-300 group-hover:scale-110"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <h3 className="font-semibold text-foreground">{method.title}</h3>
+                        <p className="text-sm text-muted-foreground">{method.description}</p>
+                        <a
+                          href={method.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-block font-medium transition-colors"
+                          style={{ color }}
+                          aria-label={`${method.title}: ${method.value}`}
+                        >
+                          {method.value}
+                        </a>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              )
+            })}
           </motion.div>
 
           {/* Main CTA */}

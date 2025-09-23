@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 /* =========================
    Tokens base (Light)
    ========================= */
@@ -8,7 +7,7 @@
   /* Brand (RGB con espacios) */
   --brand-primary: 199 214 217; /* #C7D6D9 */
   --brand-accent: 188 120 46;   /* #BC782E */
-  --neutral-light: 241 215 219; /* #F1D7DB */
+  --neutral-light: 241 231 219; /* #F1E7DB */
   --neutral-dark:  224 197 180; /* #E0C5B4 */
 
   /* Variantes con opacidad */
@@ -22,17 +21,18 @@
   --accent-40: 188 120 46 / 0.4;
   --accent-20: 188 120 46 / 0.2;
 
-  --neutral-light-80: 241 215 219 / 0.8;
-  --neutral-light-60: 241 215 219 / 0.6;
-  --neutral-light-40: 241 215 219 / 0.4;
-  --neutral-light-20: 241 215 219 / 0.2;
+  /* ✅ alineadas a #F1E7DB (241 231 219) */
+  --neutral-light-80: 241 231 219 / 0.8;
+  --neutral-light-60: 241 231 219 / 0.6;
+  --neutral-light-40: 241 231 219 / 0.4;
+  --neutral-light-20: 241 231 219 / 0.2;
 
   --neutral-dark-80: 224 197 180 / 0.8;
   --neutral-dark-60: 224 197 180 / 0.6;
   --neutral-dark-40: 224 197 180 / 0.4;
 
   /* Semantic UI tokens */
-  --background: 255 255 255;
+  --background: 241 231 219; /* #F1E7DB */
   --foreground: 51 51 51;
   --card: 255 255 255;
   --card-foreground: 51 51 51;
@@ -164,9 +164,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* =========================
-   Utilidades de marca (para cuando no quieras usar theme colors)
+   Utilidades de marca + superficies de sección
    ========================= */
 @layer utilities {
+  /* Colores directos */
   .text-brand-primary { color: rgb(var(--brand-primary)); }
   .text-brand-accent { color: rgb(var(--brand-accent)); }
   .text-neutral-light { color: rgb(var(--neutral-light)); }
@@ -211,6 +212,52 @@ h1, h2, h3, h4, h5, h6 {
   .animate-fade-in { animation: fadeIn .6s ease-out forwards; }
   .animate-slide-up { animation: slideUp .8s ease-out forwards; }
   .animate-scale-in { animation: scaleIn .5s ease-out forwards; }
+
+  /* ===== Secciones (contraste tipo sanitariadigital) ===== */
+
+  .section { position: relative; }
+  .section-pad { padding-block: 5rem; }    /* py-20 */
+  .section-pad-lg { padding-block: 6rem; } /* py-24 */
+
+  /* Banda superior (color configurable con --band-color) */
+  .section-band::before {
+    content: "";
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline: 0;
+    height: 6px;
+    background: var(--band-color, #BC782E);
+    z-index: 1;
+    border-radius: 0 0 8px 8px;
+  }
+
+  /* Línea inferior sutil */
+  .section-line::after {
+    content: "";
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline: 0;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.08);
+  }
+
+  /* Superficies suaves por sección */
+  .surface-primary { background-color: rgb(var(--brand-primary) / 0.18); }
+  .surface-sand    { background-color: rgb(var(--neutral-dark)  / 0.16); }
+  .surface-plain   { background-color: transparent; }
+
+  /* Variantes de color para la banda */
+  .band-accent  { --band-color: #BC782E; }
+  .band-primary { --band-color: #C7D6D9; }
+  .band-sand    { --band-color: #E0C5B4; }
+
+  /* Patrón radial opcional (muy suave) */
+  .surface-radial {
+    background-image:
+      radial-gradient(60% 50% at 20% 20%, rgb(var(--brand-primary) / 0.12) 0%, transparent 60%),
+      radial-gradient(50% 40% at 80% 10%, rgb(var(--neutral-dark)  / 0.10) 0%, transparent 60%);
+    background-blend-mode: normal;
+  }
 }
 
 /* =========================
