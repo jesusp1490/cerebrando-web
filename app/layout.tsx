@@ -2,11 +2,9 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Outfit } from "next/font/google"
 import { Playfair_Display } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
-import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
 import { Suspense } from "react"
-import "@/styles/globals.css"
+import "./globals.css"
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -98,11 +96,8 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased">
         <Suspense fallback={<div>Loading...</div>}>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-            {children}
-            <Toaster />
-          </ThemeProvider>
-          <Analytics />
+          {children}
+          <Toaster />
         </Suspense>
       </body>
     </html>

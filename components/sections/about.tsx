@@ -3,7 +3,6 @@
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
-import { GraduationCap, Hospital, Award, Heart } from "lucide-react"
 import { fadeInUp, staggerContainer, fadeInStagger, slideInFromLeft, slideInFromRight } from "@/lib/animations"
 import Image from "next/image"
 
@@ -11,110 +10,124 @@ export function About() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
-  const credentials = [
+  const steps = [
     {
-      icon: GraduationCap,
-      title: "Especialista en Neurofisiología Clínica",
-      description: "Formación especializada en el diagnóstico y tratamiento de trastornos neurológicos",
+      number: "01.",
+      text: "Sé cómo te sientes porque he estado en tu lugar.",
     },
     {
-      icon: Hospital,
-      title: "10+ años de experiencia hospitalaria",
-      description: "HM Hospitales en Madrid y Málaga, hospitales de referencia nacional",
+      number: "02.",
+      text: "Sé lo que necesitas porque he vivido esa necesidad.",
     },
     {
-      icon: Award,
-      title: "Colaboradora científica",
-      description: "Sociedad Española de Neurofisiología Clínica",
-    },
-    {
-      icon: Heart,
-      title: "Miles de pacientes acompañados",
-      description: "Diagnósticos neurológicos, estudios de sueño y monitorización quirúrgica",
+      number: "03.",
+      text: "Sé cómo puedo ayudarte porque ya he ayudado a otras a lograrlo.",
     },
   ]
 
   return (
-    <section id="about" className="py-20 lg:py-32 bg-neutral-light/10">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="relative py-20 lg:py-32 bg-neutral-dark/20">
+      <div className="absolute top-0 left-0 right-0 h-32 -mt-1">
+        <svg
+          className="absolute top-0 w-full h-32"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M0,0 L0,60 Q360,120 720,60 T1440,60 L1440,0 Z" fill="rgb(255, 255, 255)" />
+        </svg>
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           ref={ref}
           variants={staggerContainer}
           initial="initial"
           animate={isInView ? "animate" : "initial"}
-          className="max-w-6xl mx-auto"
+          className="max-w-6xl mx-auto space-y-16"
         >
-          {/* Section header */}
-          <motion.div variants={fadeInUp} className="text-center space-y-6 mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-foreground text-balance">
-              Quién soy
+          <motion.div variants={fadeInUp} className="text-center space-y-12">
+            <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Gracias a mi experiencia en clínica y en agencia, como emprendedora y después como empresaria, puedo decir
+              que:
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+              {steps.map((step, index) => (
+                <motion.div key={index} variants={fadeInStagger} className="flex flex-col items-center space-y-6 group">
+                  <div className="relative">
+                    <div className="w-32 h-32 rounded-full bg-gradient-to-br from-neutral-light/90 to-neutral-light/70 flex items-center justify-center border-4 border-neutral-light/60 shadow-2xl group-hover:shadow-3xl group-hover:scale-110 transition-all duration-500">
+                      <span className="text-3xl font-serif font-bold text-foreground">{step.number}</span>
+                    </div>
+                    {index < steps.length - 1 && (
+                      <div className="hidden md:block absolute top-16 left-full w-full h-1 bg-gradient-to-r from-neutral-light/70 to-neutral-light/40 shadow-md" />
+                    )}
+                  </div>
+                  <p className="text-center text-lg text-muted-foreground leading-relaxed max-w-xs">{step.text}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div variants={fadeInUp} className="text-center space-y-6">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-foreground text-balance">
+              ¿Y quién hay detrás de este proyecto?
             </h2>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Doctor's photo placeholder */}
             <motion.div variants={slideInFromLeft} className="order-2 lg:order-1">
-              <div className="relative">
-                <div className="aspect-[4/5] rounded-3xl overflow-hidden bg-gradient-to-br from-brand-primary/20 to-brand-accent/20 border border-brand-primary/20">
+              <div className="relative group">
+                <div className="absolute -left-6 top-0 bottom-0 w-8 bg-gradient-to-b from-brand-primary via-brand-primary/90 to-brand-primary/80 rounded-l-3xl shadow-2xl group-hover:shadow-3xl transition-all duration-500" />
+                <div className="aspect-[4/5] rounded-3xl overflow-hidden bg-gradient-to-br from-brand-primary/25 to-brand-accent/20 border-4 border-brand-primary/40 ml-6 shadow-2xl group-hover:shadow-3xl group-hover:scale-105 transition-all duration-500">
                   <Image
                     src="/placeholders/doctor-portrait.jpg"
                     alt="Dra. Ángela De Abreu - Especialista en Neurofisiología"
                     fill
-                    className="object-cover"
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
-
-                {/* Decorative elements */}
-                <div className="absolute -top-4 -right-4 w-24 h-24 rounded-full bg-brand-accent/20 blur-xl" />
-                <div className="absolute -bottom-4 -left-4 w-32 h-32 rounded-full bg-brand-primary/20 blur-xl" />
               </div>
             </motion.div>
 
-            {/* Content */}
-            <motion.div variants={slideInFromRight} className="order-1 lg:order-2 space-y-8">
-              {/* Main description */}
-              <div className="space-y-6">
-                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                  Soy la <span className="font-semibold text-brand-accent">Dra. Ángela De Abreu</span>, especialista en
-                  Neurofisiología Clínica con más de 10 años de experiencia en hospitales de referencia.
-                </p>
+            <motion.div variants={slideInFromRight} className="order-1 lg:order-2 space-y-6">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Hola, soy <span className="font-semibold text-brand-accent">Esther Pérez</span> y desde hace más de 13
+                años, mi vida profesional está dedicada a los negocios de salud y al marketing sanitario.
+              </p>
 
-                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                  He acompañado a miles de pacientes en diagnósticos neurológicos, estudios de sueño y monitorización en
-                  quirófano. Pero descubrí algo clave: los síntomas no mejoran solo con diagnósticos, sino entrenando el
-                  cerebro día a día.
-                </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                En 2010 y casi sin experiencia, monté mi propia clínica, fue una etapa en la que aprendí muchísimo y
+                experimenté las luces y sombras que tiene el emprender con un negocio sanitario a pie de calle.
+              </p>
 
-                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                  Por eso nace <span className="font-semibold text-brand-primary">Cerebrando</span>: para enseñarte a
-                  usar la neuroplasticidad a tu favor y crear la vida que mereces.
-                </p>
-              </div>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                En 2013 fundé mi agencia de marketing y publicidad con un área especializada en salud, que me ha
+                permitido trabajar con grandes marcas, grupos hospitalarios y decenas de clínicas Paralelamente fui
+                directora de marketing del Instituto de Medicina Reproductiva durante 7 años donde dirigí todo el
+                proceso de digitalización desde sus inicios.
+              </p>
 
-              {/* Credentials grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {credentials.map((credential, index) => (
-                  <motion.div
-                    key={index}
-                    variants={fadeInStagger}
-                    className="p-4 rounded-xl bg-background/60 border border-border hover:border-brand-primary/30 transition-colors"
-                  >
-                    <div className="flex items-start space-x-3">
-                      <div className="flex-shrink-0 p-2 rounded-lg bg-brand-primary/10">
-                        <credential.icon className="h-5 w-5 text-brand-primary" />
-                      </div>
-                      <div className="space-y-1">
-                        <h4 className="font-semibold text-sm text-foreground leading-tight">{credential.title}</h4>
-                        <p className="text-xs text-muted-foreground leading-relaxed">{credential.description}</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Y mi último proyecto es <span className="font-semibold text-brand-primary">Sanitaria Digital</span> la
+                escuela donde lanzamos al mercado a profesionales sanitarias que quieren crear su proyecto online o
+                impulsar su consulta a través de este canal.
+              </p>
             </motion.div>
           </div>
         </motion.div>
+      </div>
+
+      <div className="absolute bottom-0 left-0 right-0 h-32 -mb-1">
+        <svg
+          className="absolute bottom-0 w-full h-32"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M0,120 L0,60 Q360,0 720,60 T1440,60 L1440,120 Z" fill="rgb(255, 255, 255)" />
+        </svg>
       </div>
     </section>
   )
