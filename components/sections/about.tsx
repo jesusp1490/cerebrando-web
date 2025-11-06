@@ -26,7 +26,44 @@ export function About() {
   ]
 
   return (
-    <section id="about" className="relative py-20 lg:py-32 bg-neutral-dark/20">
+    <section
+      id="about"
+      className="relative py-20 lg:py-32 overflow-hidden bg-neutral-dark/20"
+      style={{
+        background:
+          "linear-gradient(135deg, rgba(224, 197, 180, 0.2), rgba(199, 214, 217, 0.25), rgba(241, 215, 219, 0.3))",
+      }}
+    >
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
+        <motion.div
+          className="absolute top-20 right-10 w-96 h-96 rounded-full blur-3xl"
+          style={{ background: "rgba(224, 197, 180, 0.5)" }}
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.4, 0.7, 0.4],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-20 left-10 w-[500px] h-[500px] rounded-full blur-3xl"
+          style={{ background: "rgba(199, 214, 217, 0.5)" }}
+          animate={{
+            scale: [1, 1.4, 1],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "easeInOut",
+            delay: 1,
+          }}
+        />
+      </div>
+
       <div className="absolute top-0 left-0 right-0 h-32 -mt-1">
         <svg
           className="absolute top-0 w-full h-32"

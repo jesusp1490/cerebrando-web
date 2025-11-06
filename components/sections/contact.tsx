@@ -12,14 +12,9 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/hooks/use-toast"
-import { Mail, Send, CheckCircle } from "lucide-react"
+import { Mail, Instagram, Youtube, Video, Send, CheckCircle } from "lucide-react"
 import { fadeInUp, staggerContainer, fadeInStagger } from "@/lib/animations"
 import { siteConfig } from "@/config/site"
-
-// Logos oficiales
-import { SiInstagram, SiTiktok, SiYoutube } from "react-icons/si"
-
-type IconCmp = React.ComponentType<{ size?: number; className?: string }>
 
 export function Contact() {
   const ref = useRef(null)
@@ -37,7 +32,11 @@ export function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+
+    // Simulate form submission (no backend)
     await new Promise((resolve) => setTimeout(resolve, 1500))
+
+    console.log("Form submitted:", formData)
     setIsSubmitting(false)
     setIsSubmitted(true)
 
@@ -46,6 +45,7 @@ export function Contact() {
       description: "Gracias por contactar. Te responderé pronto.",
     })
 
+    // Reset form after 3 seconds
     setTimeout(() => {
       setIsSubmitted(false)
       setFormData({ name: "", email: "", message: "" })
@@ -53,41 +53,30 @@ export function Contact() {
     }, 3000)
   }
 
-  const contactMethods: Array<{
-    key: "email" | "instagram" | "tiktok" | "youtube"
-    icon: IconCmp
-    title: string
-    value: string
-    href: string
-    description: string
-  }> = [
+  const contactMethods = [
     {
-      key: "email",
-      icon: Mail as unknown as IconCmp,
+      icon: Mail,
       title: "Email",
       value: siteConfig.links.email,
       href: `mailto:${siteConfig.links.email}`,
       description: "Escríbeme directamente",
     },
     {
-      key: "instagram",
-      icon: SiInstagram,
+      icon: Instagram,
       title: "Instagram",
       value: "@cerebrando",
       href: siteConfig.links.instagram,
       description: "Sígueme para contenido diario",
     },
     {
-      key: "tiktok",
-      icon: SiTiktok,
+      icon: Video,
       title: "TikTok",
       value: "@cerebrando",
       href: siteConfig.links.tiktok,
       description: "Tips rápidos de neurociencia",
     },
     {
-      key: "youtube",
-      icon: SiYoutube,
+      icon: Youtube,
       title: "YouTube",
       value: "@cerebrando",
       href: siteConfig.links.youtube,
@@ -96,8 +85,45 @@ export function Contact() {
   ]
 
   return (
-    <section id="contacto" className="py-20 lg:py-32 bg-gradient-to-br from-brand-primary/5 to-brand-accent/5">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      id="contacto"
+      className="py-20 lg:py-32 relative overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(135deg, rgba(199, 214, 217, 0.25), rgba(241, 215, 219, 0.3), rgba(224, 197, 180, 0.2))",
+      }}
+    >
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
+        <motion.div
+          className="absolute top-20 right-10 w-96 h-96 rounded-full blur-3xl"
+          style={{ background: "rgba(199, 214, 217, 0.5)" }}
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.4, 0.7, 0.4],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-20 left-10 w-[500px] h-[500px] rounded-full blur-3xl"
+          style={{ background: "rgba(241, 215, 219, 0.5)" }}
+          animate={{
+            scale: [1, 1.4, 1],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "easeInOut",
+            delay: 1,
+          }}
+        />
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           ref={ref}
           variants={staggerContainer}
@@ -118,35 +144,29 @@ export function Contact() {
 
           {/* Contact methods */}
           <motion.div variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {contactMethods.map((method) => {
-              const Icon = method.icon
-              return (
-                <motion.div key={method.key} variants={fadeInStagger}>
-                  <Card className="group h-full border-border hover:border-brand-primary/30 transition-all duration-300 hover:shadow-lg">
-                    <CardContent className="p-6 text-center space-y-4">
-                      {/* Icono oficial + grande + color de marca */}
-                      <div className="mx-auto w-16 h-16 rounded-full bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center shadow-sm group-hover:bg-brand-primary/20 transition-colors">
-                        <Icon size={34} className="text-brand-accent transition-transform duration-300 group-hover:scale-110" />
-                      </div>
-
-                      <div className="space-y-2">
-                        <h3 className="font-semibold text-foreground">{method.title}</h3>
-                        <p className="text-sm text-muted-foreground">{method.description}</p>
-                        <a
-                          href={method.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-block font-medium text-brand-accent hover:text-brand-accent/80 transition-colors"
-                          aria-label={`${method.title}: ${method.value}`}
-                        >
-                          {method.value}
-                        </a>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              )
-            })}
+            {contactMethods.map((method, index) => (
+              <motion.div key={index} variants={fadeInStagger}>
+                <Card className="group h-full border-border hover:border-brand-primary/30 transition-all duration-300 hover:shadow-lg">
+                  <CardContent className="p-6 text-center space-y-4">
+                    <div className="mx-auto w-12 h-12 rounded-full bg-brand-primary/10 flex items-center justify-center group-hover:bg-brand-primary/20 transition-colors">
+                      <method.icon className="h-6 w-6 text-brand-primary" />
+                    </div>
+                    <div className="space-y-2">
+                      <h3 className="font-semibold text-foreground">{method.title}</h3>
+                      <p className="text-sm text-muted-foreground">{method.description}</p>
+                      <a
+                        href={method.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block text-brand-accent hover:text-brand-accent/80 font-medium transition-colors"
+                      >
+                        {method.value}
+                      </a>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
           </motion.div>
 
           {/* Main CTA */}

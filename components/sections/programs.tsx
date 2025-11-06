@@ -121,7 +121,44 @@ export function Programs() {
       </section>
 
       {/* Programs section */}
-      <section id="programas" className="py-20 lg:py-32 bg-background">
+      <section
+        id="programas"
+        className="py-20 lg:py-32 relative overflow-hidden"
+        style={{
+          background:
+            "linear-gradient(135deg, rgba(241, 215, 219, 0.25), rgba(224, 197, 180, 0.3), rgba(199, 214, 217, 0.2))",
+        }}
+      >
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
+          <motion.div
+            className="absolute top-20 left-10 w-96 h-96 rounded-full blur-3xl"
+            style={{ background: "rgba(241, 215, 219, 0.5)" }}
+            animate={{
+              scale: [1, 1.3, 1],
+              opacity: [0.4, 0.7, 0.4],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute bottom-20 right-10 w-[500px] h-[500px] rounded-full blur-3xl"
+            style={{ background: "rgba(224, 197, 180, 0.5)" }}
+            animate={{
+              scale: [1, 1.4, 1],
+              opacity: [0.3, 0.6, 0.3],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "easeInOut",
+              delay: 1,
+            }}
+          />
+        </div>
+
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             ref={ref}
