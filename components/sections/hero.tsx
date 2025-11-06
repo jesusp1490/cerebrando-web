@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { fadeInUp, staggerContainer, fadeInStagger, neuralPulse } from "@/lib/animations"
 import { useReducedMotion } from "@/hooks/use-reduced-motion"
 import Image from "next/image"
+import { Sparkles } from "lucide-react"
 
 export function Hero() {
   const prefersReducedMotion = useReducedMotion()
@@ -19,7 +20,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+      className="relative min-h-[85vh] lg:min-h-[90vh] xl:min-h-screen flex items-center justify-center overflow-hidden pt-20 sm:pt-24 lg:pt-28 pb-12 sm:pb-16 lg:pb-20"
       style={{
         background:
           "linear-gradient(135deg, rgba(199, 214, 217, 0.15), rgba(241, 215, 219, 0.25), rgba(188, 120, 46, 0.12))",
@@ -73,21 +74,18 @@ export function Hero() {
           variants={staggerContainer}
           initial="initial"
           animate="animate"
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-7xl mx-auto"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center max-w-7xl mx-auto"
         >
-          <motion.div variants={fadeInUp} className="space-y-8 text-center lg:text-left">
-            <h1
-              className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-foreground leading-tight text-balance"
-              style={{
-                textShadow: "0 6px 25px rgba(0, 0, 0, 0.2), 0 3px 12px rgba(0, 0, 0, 0.15)",
-                filter: "drop-shadow(0 12px 35px rgba(0, 0, 0, 0.15))",
-              }}
-            >
+          <motion.div
+            variants={fadeInUp}
+            className="space-y-4 sm:space-y-5 lg:space-y-6 xl:space-y-8 text-center lg:text-left"
+          >
+            <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-serif font-bold text-foreground leading-tight text-balance">
               Transforma tu mente, tu salud y tu vida{" "}
               <span
                 style={{
                   background:
-                    "linear-gradient(135deg, rgb(188, 120, 46) 0%, rgb(255, 200, 100) 25%, rgb(100, 220, 240) 70%, rgb(80, 200, 220) 100%)",
+                    "linear-gradient(135deg, rgb(199, 214, 217) 0%, rgb(188, 120, 46) 35%, rgb(241, 215, 219) 70%, rgb(224, 197, 180) 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -100,7 +98,7 @@ export function Hero() {
 
             <motion.p
               variants={fadeInStagger}
-              className="text-lg sm:text-xl lg:text-2xl text-muted-foreground leading-relaxed text-pretty"
+              className="text-sm sm:text-base lg:text-lg xl:text-xl text-muted-foreground leading-relaxed text-pretty"
             >
               Soy la Dra. Ángela De Abreu, especialista en Neurofisiología y creadora de Cerebrando: un espacio donde la
               ciencia y la conciencia se unen para ayudarte a dormir mejor, reducir el estrés y potenciar tu
@@ -109,24 +107,26 @@ export function Hero() {
 
             <motion.div
               variants={fadeInStagger}
-              className="inline-flex items-center px-8 py-5 rounded-2xl border-[3px] backdrop-blur-md transition-all duration-500 hover:scale-105"
+              className="relative inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-4 rounded-2xl backdrop-blur-md transition-all duration-500 hover:scale-105 group"
               style={{
-                borderColor: "rgba(188, 120, 46, 0.5)",
-                background: "rgba(255, 255, 255, 0.85)",
-                boxShadow:
-                  "0 15px 40px rgba(188, 120, 46, 0.35), 0 8px 20px rgba(199, 214, 217, 0.3), 0 0 30px rgba(188, 120, 46, 0.2)",
+                background: "linear-gradient(135deg, rgba(188, 120, 46, 0.15), rgba(199, 214, 217, 0.15))",
+                border: "2px solid rgba(188, 120, 46, 0.4)",
+                boxShadow: "0 10px 30px rgba(188, 120, 46, 0.2), 0 5px 15px rgba(199, 214, 217, 0.15)",
               }}
             >
-              <span className="text-xl font-bold" style={{ color: "rgb(188, 120, 46)" }}>
-                👉 No es magia, es neurociencia.
+              <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/80 shadow-md group-hover:rotate-12 transition-transform duration-500">
+                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: "rgb(188, 120, 46)" }} />
+              </div>
+              <span className="text-sm sm:text-base lg:text-lg font-bold" style={{ color: "rgb(188, 120, 46)" }}>
+                No es magia, es neurociencia
               </span>
             </motion.div>
 
-            <motion.div variants={fadeInStagger} className="pt-4">
+            <motion.div variants={fadeInStagger} className="pt-2 sm:pt-3 lg:pt-4">
               <Button
                 onClick={scrollToContact}
                 size="lg"
-                className="px-10 py-6 rounded-full font-bold text-xl text-white transition-all duration-500 hover:scale-110 hover:-translate-y-2 relative overflow-hidden shadow-2xl"
+                className="px-6 sm:px-8 lg:px-10 py-4 sm:py-5 lg:py-6 rounded-full font-bold text-base sm:text-lg lg:text-xl text-white transition-all duration-500 hover:scale-110 hover:-translate-y-2 relative overflow-hidden shadow-2xl"
                 style={{
                   backgroundColor: "rgb(188, 120, 46)",
                   boxShadow:
@@ -140,7 +140,7 @@ export function Hero() {
 
           <motion.div variants={fadeInUp} className="relative">
             <div
-              className="relative aspect-[4/5] rounded-3xl overflow-hidden border-[4px] shadow-2xl"
+              className="relative aspect-[4/5] max-h-[500px] lg:max-h-[550px] xl:max-h-[650px] 2xl:max-h-none rounded-3xl overflow-hidden border-[4px] shadow-2xl"
               style={{
                 borderColor: "rgba(199, 214, 217, 0.6)",
                 boxShadow:
@@ -173,28 +173,6 @@ export function Hero() {
           </motion.div>
         </motion.div>
       </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5, duration: 0.5 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-      >
-        <div className="flex flex-col items-center space-y-2 text-muted-foreground">
-          <span className="text-sm font-medium">Descubre más</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-            className="w-6 h-10 border-2 rounded-full flex justify-center backdrop-blur-sm shadow-lg"
-            style={{
-              borderColor: "rgba(199, 214, 217, 0.5)",
-              background: "rgba(199, 214, 217, 0.1)",
-            }}
-          >
-            <div className="w-1.5 h-3 rounded-full mt-2" style={{ background: "rgb(199, 214, 217)" }} />
-          </motion.div>
-        </div>
-      </motion.div>
 
       <div className="absolute bottom-0 left-0 right-0 h-32">
         <svg
