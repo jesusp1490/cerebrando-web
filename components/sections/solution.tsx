@@ -33,7 +33,7 @@ export function Solution() {
   return (
     <section
       id="solucion"
-      className="relative py-20 lg:py-32 overflow-hidden bg-background"
+      className="relative py-16 sm:py-20 md:py-24 lg:py-28 xl:py-32 overflow-hidden bg-background"
       style={{
         background:
           "linear-gradient(135deg, rgba(199, 214, 217, 0.2), rgba(241, 215, 219, 0.3), rgba(224, 197, 180, 0.25))",
@@ -69,9 +69,9 @@ export function Solution() {
         />
       </div>
 
-      <div className="absolute top-0 left-0 right-0 h-32 -mt-1">
+      <div className="absolute top-0 left-0 right-0 h-20 sm:h-24 md:h-32 -mt-1">
         <svg
-          className="absolute top-0 w-full h-32"
+          className="absolute top-0 w-full h-20 sm:h-24 md:h-32"
           viewBox="0 0 1440 120"
           preserveAspectRatio="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -86,11 +86,11 @@ export function Solution() {
           variants={staggerContainer}
           initial="initial"
           animate={isInView ? "animate" : "initial"}
-          className="max-w-6xl mx-auto space-y-16"
+          className="max-w-6xl mx-auto space-y-12 sm:space-y-14 md:space-y-16"
         >
-          <motion.div variants={fadeInStagger} className="text-center space-y-6">
+          <motion.div variants={fadeInStagger} className="text-center space-y-4 sm:space-y-6 px-4">
             <h2
-              className="text-5xl sm:text-6xl lg:text-7xl font-serif font-bold text-foreground text-balance"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold text-foreground text-balance"
               style={{
                 textShadow: "0 6px 25px rgba(0, 0, 0, 0.2), 0 3px 12px rgba(0, 0, 0, 0.15)",
                 filter: "drop-shadow(0 12px 35px rgba(0, 0, 0, 0.15))",
@@ -98,54 +98,60 @@ export function Solution() {
             >
               Cómo lo soluciono
             </h2>
-            <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed max-w-4xl mx-auto text-pretty">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed max-w-4xl mx-auto text-pretty">
               En Cerebrando combino mi experiencia clínica con herramientas prácticas y transformadoras:
             </p>
           </motion.div>
 
-          <motion.div variants={staggerContainer} className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-16">
+          <motion.div
+            variants={staggerContainer}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mt-12 sm:mt-14 md:mt-16"
+          >
             {features.map((feature, index) => (
               <motion.div
                 key={index}
                 variants={fadeInStagger}
                 whileHover={scaleOnHover.whileHover}
                 transition={scaleOnHover.transition}
-                className="group relative p-10 rounded-3xl bg-white border-[3px] transition-all duration-400 hover:translate-y-[-12px] hover:scale-[1.04]"
+                className="group relative p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl bg-white border-[3px] transition-all duration-400 hover:translate-y-[-12px] hover:scale-[1.04]"
                 style={{
                   borderColor: "rgba(199, 214, 217, 0.5)",
                   boxShadow:
                     "0 8px 25px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(188, 120, 46, 0.2), 0 0 20px rgba(199, 214, 217, 0.15)",
                 }}
               >
-                <div className="flex justify-center mb-8">
+                <div className="flex justify-center mb-6 sm:mb-8">
                   <div
-                    className="p-6 rounded-2xl bg-white group-hover:scale-125 transition-all duration-500 shadow-lg"
+                    className="p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl bg-white group-hover:scale-125 transition-all duration-500 shadow-lg"
                     style={{
                       background: "rgba(199, 214, 217, 0.3)",
                       boxShadow: "0 6px 20px rgba(199, 214, 217, 0.3), 0 3px 10px rgba(188, 120, 46, 0.2)",
                     }}
                   >
-                    <feature.icon className="h-12 w-12" style={{ color: "rgb(188, 120, 46)", strokeWidth: 2.5 }} />
+                    <feature.icon
+                      className="h-10 w-10 sm:h-11 sm:w-11 md:h-12 md:w-12"
+                      style={{ color: "rgb(188, 120, 46)", strokeWidth: 2.5 }}
+                    />
                   </div>
                 </div>
 
-                <div className="text-center space-y-4">
-                  <h3 className="text-2xl font-serif font-bold text-foreground group-hover:text-[rgb(188,120,46)] transition-colors duration-300">
+                <div className="text-center space-y-3 sm:space-y-4">
+                  <h3 className="text-xl sm:text-2xl font-serif font-bold text-foreground group-hover:text-[rgb(188,120,46)] transition-colors duration-300">
                     {feature.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed text-lg">{feature.description}</p>
+                  <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">{feature.description}</p>
                 </div>
 
-                <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-125">
-                  <ArrowRight className="h-7 w-7 drop-shadow-lg" style={{ color: "rgb(188, 120, 46)" }} />
+                <div className="absolute bottom-4 sm:bottom-6 right-4 sm:right-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-125">
+                  <ArrowRight className="h-6 w-6 sm:h-7 sm:w-7 drop-shadow-lg" style={{ color: "rgb(188, 120, 46)" }} />
                 </div>
               </motion.div>
             ))}
           </motion.div>
 
-          <motion.div variants={fadeInStagger} className="text-center mt-16">
+          <motion.div variants={fadeInStagger} className="text-center mt-12 sm:mt-14 md:mt-16 px-4">
             <div
-              className="inline-flex items-center px-12 py-7 rounded-2xl backdrop-blur-md border-[4px] hover:scale-105 transition-all duration-500"
+              className="inline-flex items-center px-6 sm:px-8 md:px-12 py-5 sm:py-6 md:py-7 rounded-xl sm:rounded-2xl backdrop-blur-md border-[3px] sm:border-[4px] hover:scale-105 transition-all duration-500"
               style={{
                 background: "rgba(255, 255, 255, 0.9)",
                 borderColor: "rgba(188, 120, 46, 0.5)",
@@ -153,7 +159,10 @@ export function Solution() {
                   "0 25px 60px rgba(188, 120, 46, 0.4), 0 15px 35px rgba(199, 214, 217, 0.35), 0 0 40px rgba(188, 120, 46, 0.25)",
               }}
             >
-              <span className="text-xl sm:text-2xl font-bold" style={{ color: "rgb(188, 120, 46)" }}>
+              <span
+                className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold"
+                style={{ color: "rgb(188, 120, 46)" }}
+              >
                 👉 La fórmula es simple: ciencia + hábitos + conciencia = resultados reales.
               </span>
             </div>
@@ -161,9 +170,9 @@ export function Solution() {
         </motion.div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-32 -mb-1">
+      <div className="absolute bottom-0 left-0 right-0 h-20 sm:h-24 md:h-32 -mb-1">
         <svg
-          className="absolute bottom-0 w-full h-32"
+          className="absolute bottom-0 w-full h-20 sm:h-24 md:h-32"
           viewBox="0 0 1440 120"
           preserveAspectRatio="none"
           xmlns="http://www.w3.org/2000/svg"

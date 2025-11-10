@@ -36,15 +36,15 @@ export function Problem() {
   return (
     <section
       id="problema"
-      className="relative py-24 lg:py-36"
+      className="relative py-16 sm:py-20 md:py-24 lg:py-32 xl:py-36"
       style={{
         background:
           "linear-gradient(135deg, rgba(199, 214, 217, 0.35) 0%, rgba(241, 215, 219, 0.45) 50%, rgba(224, 197, 180, 0.4) 100%)",
       }}
     >
-      <div className="absolute top-0 left-0 right-0 h-40 -mt-1">
+      <div className="absolute top-0 left-0 right-0 h-24 sm:h-32 md:h-40 -mt-1">
         <svg
-          className="absolute top-0 w-full h-40"
+          className="absolute top-0 w-full h-24 sm:h-32 md:h-40"
           viewBox="0 0 1440 120"
           preserveAspectRatio="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -90,11 +90,11 @@ export function Problem() {
           variants={staggerContainer}
           initial="initial"
           animate={isInView ? "animate" : "initial"}
-          className="max-w-5xl mx-auto text-center space-y-14"
+          className="max-w-5xl mx-auto text-center space-y-10 sm:space-y-12 md:space-y-14"
         >
-          <motion.div variants={fadeInUp} className="space-y-6">
+          <motion.div variants={fadeInUp} className="space-y-4 sm:space-y-6">
             <h2
-              className="text-5xl sm:text-6xl lg:text-7xl font-serif font-bold text-foreground text-balance"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold text-foreground text-balance px-4"
               style={{
                 textShadow: "0 6px 25px rgba(0, 0, 0, 0.2), 0 3px 12px rgba(0, 0, 0, 0.15)",
                 filter: "drop-shadow(0 12px 35px rgba(0, 0, 0, 0.15))",
@@ -104,42 +104,48 @@ export function Problem() {
             </h2>
           </motion.div>
 
-          <motion.div variants={fadeInStagger} className="space-y-8">
-            <p className="text-2xl sm:text-3xl lg:text-4xl text-muted-foreground leading-relaxed text-pretty font-medium">
+          <motion.div variants={fadeInStagger} className="space-y-6 sm:space-y-8 px-4">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground leading-relaxed text-pretty font-medium">
               ¿Te sientes agotada, con estrés constante o con insomnio que no te deja rendir?
             </p>
-            <p className="text-2xl sm:text-3xl lg:text-4xl text-muted-foreground leading-relaxed text-pretty font-medium">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground leading-relaxed text-pretty font-medium">
               ¿Notas que tu mente va más rápido que tu vida y no sabes cómo parar?
             </p>
           </motion.div>
 
-          <motion.div variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 mt-20">
+          <motion.div
+            variants={staggerContainer}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 mt-12 sm:mt-16 md:mt-20"
+          >
             {problems.map((problem, index) => (
               <motion.div
                 key={index}
                 variants={fadeInStagger}
-                className="bg-white rounded-3xl p-8 border-[3px] transition-all duration-500 hover:-translate-y-4 hover:scale-[1.03] relative overflow-hidden group"
+                className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 border-[3px] transition-all duration-500 hover:-translate-y-4 hover:scale-[1.03] relative overflow-hidden group"
                 style={{
                   borderColor: "rgba(199, 214, 217, 0.5)",
                   boxShadow:
                     "0 8px 25px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(188, 120, 46, 0.2), 0 0 20px rgba(199, 214, 217, 0.15)",
                 }}
               >
-                <div className="flex items-start space-x-6 relative z-10">
+                <div className="flex items-start space-x-4 sm:space-x-6 relative z-10">
                   <div
-                    className="flex-shrink-0 p-6 rounded-2xl transition-all duration-500 group-hover:scale-125 shadow-lg"
+                    className="flex-shrink-0 p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl transition-all duration-500 group-hover:scale-125 shadow-lg"
                     style={{
                       background: "rgba(199, 214, 217, 0.4)",
                       boxShadow: "0 6px 20px rgba(199, 214, 217, 0.3), 0 3px 10px rgba(188, 120, 46, 0.2)",
                     }}
                   >
-                    <problem.icon className="h-10 w-10" style={{ color: "rgb(188, 120, 46)", strokeWidth: 2.5 }} />
+                    <problem.icon
+                      className="h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10"
+                      style={{ color: "rgb(188, 120, 46)", strokeWidth: 2.5 }}
+                    />
                   </div>
-                  <div className="text-left space-y-4">
-                    <h3 className="text-2xl font-bold text-foreground group-hover:text-[rgb(188,120,46)] transition-colors duration-300">
+                  <div className="text-left space-y-2 sm:space-y-3 md:space-y-4">
+                    <h3 className="text-xl sm:text-2xl font-bold text-foreground group-hover:text-[rgb(188,120,46)] transition-colors duration-300">
                       {problem.title}
                     </h3>
-                    <p className="text-lg text-muted-foreground leading-relaxed">{problem.description}</p>
+                    <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">{problem.description}</p>
                   </div>
                 </div>
               </motion.div>
@@ -148,7 +154,7 @@ export function Problem() {
 
           <motion.div
             variants={fadeInStagger}
-            className="mt-20 p-12 rounded-3xl backdrop-blur-md border-[4px] hover:scale-105 transition-all duration-500"
+            className="mt-12 sm:mt-16 md:mt-20 p-8 sm:p-10 md:p-12 rounded-2xl sm:rounded-3xl backdrop-blur-md border-[3px] sm:border-[4px] hover:scale-105 transition-all duration-500"
             style={{
               background: "rgba(255, 255, 255, 0.9)",
               borderColor: "rgba(188, 120, 46, 0.5)",
@@ -156,7 +162,7 @@ export function Problem() {
                 "0 25px 60px rgba(188, 120, 46, 0.4), 0 15px 35px rgba(199, 214, 217, 0.35), 0 0 40px rgba(188, 120, 46, 0.25)",
             }}
           >
-            <p className="text-xl sm:text-2xl font-semibold text-foreground leading-relaxed text-pretty relative z-10">
+            <p className="text-lg sm:text-xl md:text-2xl font-semibold text-foreground leading-relaxed text-pretty relative z-10">
               Estos problemas no son 'cosas de tu cabeza'. Son señales de que tu cerebro necesita entrenarse para
               recuperar equilibrio, energía y bienestar.
             </p>
@@ -164,9 +170,9 @@ export function Problem() {
         </motion.div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-40 -mb-1">
+      <div className="absolute bottom-0 left-0 right-0 h-24 sm:h-32 md:h-40 -mb-1">
         <svg
-          className="absolute bottom-0 w-full h-40"
+          className="absolute bottom-0 w-full h-24 sm:h-32 md:h-40"
           viewBox="0 0 1440 120"
           preserveAspectRatio="none"
           xmlns="http://www.w3.org/2000/svg"
