@@ -191,7 +191,7 @@ export function Programs() {
               <Button
                 onClick={scrollToContact}
                 size="lg"
-                className="bg-brand-primary hover:bg-brand-primary/90 text-white px-10 py-6 rounded-full shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 text-lg font-semibold"
+                className="bg-[#BC782E] hover:bg-[#A66828] text-white px-10 py-6 rounded-full shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 text-lg font-semibold"
               >
                 Descubre mis programas
                 <ArrowRight className="ml-2 h-5 w-5" />
