@@ -109,7 +109,7 @@ export function Contact() {
   return (
     <section
       id="contacto"
-      className="relative py-24 lg:py-36"
+      className="relative py-16 sm:py-20 md:py-24 lg:py-32 xl:py-36"
       style={{
         background:
           "linear-gradient(135deg, rgba(199, 214, 217, 0.35) 0%, rgba(241, 215, 219, 0.45) 50%, rgba(224, 197, 180, 0.4) 100%)",
@@ -133,38 +133,41 @@ export function Contact() {
           variants={staggerContainer}
           initial="initial"
           animate={isInView ? "animate" : "initial"}
-          className="max-w-6xl mx-auto space-y-16"
+          className="max-w-6xl mx-auto space-y-10 sm:space-y-12 md:space-y-14 lg:space-y-16"
         >
           {/* Section header */}
-          <motion.div variants={fadeInUp} className="text-center space-y-6">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-foreground text-balance">
+          <motion.div variants={fadeInUp} className="text-center space-y-4 sm:space-y-5 md:space-y-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold text-foreground text-balance">
               Contacto
             </h2>
-            <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed text-pretty">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed text-pretty">
               ¿Lista para transformar tu mente y tu vida? Conectemos y comencemos tu viaje hacia el bienestar
               neurológico.
             </p>
           </motion.div>
 
-          <motion.div variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.div
+            variants={staggerContainer}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6"
+          >
             {contactMethods.map((method, index) => (
               <motion.div key={index} variants={fadeInStagger}>
                 <Card className="group h-full bg-white/90 backdrop-blur-sm border-2 hover:border-opacity-50 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-                  <CardContent className="p-6 text-center space-y-4">
+                  <CardContent className="p-5 sm:p-6 text-center space-y-3 sm:space-y-4">
                     <div
-                      className="mx-auto w-14 h-14 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg"
+                      className="mx-auto w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg"
                       style={{ backgroundColor: `${method.color}15` }}
                     >
                       <method.icon style={{ color: method.color }} />
                     </div>
-                    <div className="space-y-2">
-                      <h3 className="font-bold text-lg text-foreground">{method.title}</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{method.description}</p>
+                    <div className="space-y-1 sm:space-y-2">
+                      <h3 className="font-bold text-base sm:text-lg text-foreground">{method.title}</h3>
+                      <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{method.description}</p>
                       <a
                         href={method.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-block font-semibold transition-colors hover:underline"
+                        className="inline-block text-sm font-semibold transition-colors hover:underline"
                         style={{ color: method.color }}
                       >
                         {method.value}
@@ -177,14 +180,14 @@ export function Contact() {
           </motion.div>
 
           {/* Main CTA */}
-          <motion.div variants={fadeInStagger} className="text-center space-y-8">
+          <motion.div variants={fadeInStagger} className="text-center space-y-6 sm:space-y-8">
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
                 <Button
                   size="lg"
-                  className="bg-[#BC782E] hover:bg-[#BC782E]/90 text-white px-10 py-7 text-lg rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
+                  className="bg-[#BC782E] hover:bg-[#BC782E]/90 text-white px-8 sm:px-9 md:px-10 py-5 sm:py-6 md:py-7 text-base sm:text-base md:text-lg rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
                 >
-                  <Send className="mr-2 h-5 w-5" />
+                  <Send className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                   Solicita información
                 </Button>
               </DialogTrigger>

@@ -82,7 +82,7 @@ export function Credibility() {
   }
 
   return (
-    <section id="credibilidad" className="relative py-20 lg:py-32 bg-neutral-dark/8">
+    <section id="credibilidad" className="relative py-14 sm:py-16 md:py-20 lg:py-28 xl:py-32 bg-neutral-dark/8">
       <div className="absolute top-0 left-0 right-0 h-40 -mt-1">
         <svg
           className="absolute top-0 w-full h-40"
@@ -101,11 +101,11 @@ export function Credibility() {
           variants={staggerContainer}
           initial="initial"
           animate={isInView ? "animate" : "initial"}
-          className="max-w-6xl mx-auto space-y-16"
+          className="max-w-6xl mx-auto space-y-10 sm:space-y-12 md:space-y-14 lg:space-y-16"
         >
-          <motion.div variants={fadeInUp} className="text-center space-y-6">
+          <motion.div variants={fadeInUp} className="text-center space-y-4 sm:space-y-5 md:space-y-6">
             <h2
-              className="text-5xl sm:text-6xl lg:text-7xl font-serif font-bold text-foreground text-balance"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-serif font-bold text-foreground text-balance"
               style={{
                 textShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
               }}
@@ -114,23 +114,26 @@ export function Credibility() {
             </h2>
           </motion.div>
 
-          <motion.div variants={fadeInStagger} className="text-center space-y-6">
-            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-4xl mx-auto text-pretty">
+          <motion.div variants={fadeInStagger} className="text-center space-y-4 sm:space-y-5 md:space-y-6">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-4xl mx-auto text-pretty">
               He trabajado en hospitales líderes como HM Hospitales en Madrid y Málaga, y soy colaboradora en la
               Sociedad Española de Neurofisiología Clínica.
             </p>
-            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-4xl mx-auto text-pretty">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-4xl mx-auto text-pretty">
               Mi trabajo combina más de una década de experiencia médica con lo último en neurociencia aplicada al
               bienestar.
             </p>
           </motion.div>
 
-          <motion.div variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+          <motion.div
+            variants={staggerContainer}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7 md:gap-8 lg:gap-10"
+          >
             {credentials.map((credential, index) => (
               <motion.div
                 key={index}
                 variants={fadeInStagger}
-                className="bg-white rounded-3xl p-8 border-2 transition-all duration-500 hover:-translate-y-3 hover:scale-[1.02] relative overflow-hidden group"
+                className="bg-white rounded-3xl p-6 sm:p-7 md:p-8 border-2 transition-all duration-500 hover:-translate-y-3 hover:scale-[1.02] relative overflow-hidden group"
                 style={{
                   borderColor: "rgba(241, 215, 219, 0.4)",
                   boxShadow: "0 4px 16px rgba(199, 214, 217, 0.2), 0 2px 8px rgba(188, 120, 46, 0.15)",
@@ -147,11 +150,11 @@ export function Credibility() {
                     <credential.icon className="h-12 w-12" style={{ color: "rgb(199, 214, 217)" }} />
                   </div>
 
-                  <div className="space-y-3">
-                    <h3 className="font-semibold text-xl text-foreground leading-tight group-hover:text-[rgb(188,120,46)] transition-colors duration-300">
+                  <div className="space-y-2 sm:space-y-3">
+                    <h3 className="font-semibold text-lg sm:text-xl text-foreground leading-tight group-hover:text-[rgb(188,120,46)] transition-colors duration-300">
                       {credential.title}
                     </h3>
-                    <p className="text-base text-muted-foreground">{credential.description}</p>
+                    <p className="text-sm sm:text-base text-muted-foreground">{credential.description}</p>
                   </div>
                 </div>
               </motion.div>
@@ -159,23 +162,25 @@ export function Credibility() {
           </motion.div>
 
           <motion.div variants={fadeInStagger} className="text-center">
-            <div className="inline-flex items-center px-6 py-3 rounded-full bg-brand-primary/15 border-2 border-brand-primary/30 shadow-lg">
-              <span className="text-lg font-medium text-brand-primary">
+            <div className="inline-flex items-center px-5 sm:px-6 py-2 sm:py-3 rounded-full bg-brand-primary/15 border-2 border-brand-primary/30 shadow-lg">
+              <span className="text-sm sm:text-base md:text-lg font-medium text-brand-primary">
                 👉 Aquí pronto verás historias reales de pacientes y alumnas que ya han transformado su vida.
               </span>
             </div>
           </motion.div>
 
-          <motion.div variants={fadeInStagger} className="space-y-8">
+          <motion.div variants={fadeInStagger} className="space-y-6 sm:space-y-8">
             <div className="text-center">
-              <h3 className="text-3xl font-serif font-semibold text-foreground mb-3">Testimonios</h3>
-              <p className="text-lg text-muted-foreground">Historias de transformación (próximamente)</p>
+              <h3 className="text-2xl sm:text-2xl md:text-3xl font-serif font-semibold text-foreground mb-2 sm:mb-3">
+                Testimonios
+              </h3>
+              <p className="text-base sm:text-lg text-muted-foreground">Historias de transformación (próximamente)</p>
             </div>
 
             <div className="relative max-w-4xl mx-auto">
               <div className="p-1 rounded-3xl bg-gradient-to-br from-brand-primary/30 via-brand-accent/20 to-brand-primary/30 shadow-2xl">
-                <div className="p-10 lg:p-14 rounded-3xl bg-white">
-                  <div className="flex flex-col lg:flex-row items-center space-y-6 lg:space-y-0 lg:space-x-8">
+                <div className="p-8 sm:p-9 md:p-10 lg:p-14 rounded-3xl bg-white">
+                  <div className="flex flex-col lg:flex-row items-center space-y-5 sm:space-y-6 lg:space-y-0 lg:space-x-8">
                     <div className="flex-shrink-0">
                       <div className="w-24 h-24 rounded-full bg-gradient-to-br from-brand-primary/30 to-brand-accent/30 p-1 shadow-xl">
                         <div className="w-full h-full rounded-full overflow-hidden bg-white">
@@ -190,14 +195,14 @@ export function Credibility() {
                       </div>
                     </div>
 
-                    <div className="flex-1 text-center lg:text-left space-y-4">
+                    <div className="flex-1 text-center lg:text-left space-y-3 sm:space-y-4">
                       <div className="flex justify-center lg:justify-start space-x-1">
                         {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
                           <Star key={i} className="h-5 w-5 fill-brand-accent text-brand-accent" />
                         ))}
                       </div>
 
-                      <blockquote className="text-lg text-muted-foreground italic leading-relaxed">
+                      <blockquote className="text-base sm:text-lg text-muted-foreground italic leading-relaxed">
                         "{testimonials[currentTestimonial].content}"
                       </blockquote>
 
@@ -261,4 +266,3 @@ export function Credibility() {
     </section>
   )
 }
-

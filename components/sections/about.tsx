@@ -12,7 +12,7 @@ export function About() {
   return (
     <section
       id="about"
-      className="relative py-16 sm:py-20 md:py-24 lg:py-28 xl:py-32 overflow-hidden bg-neutral-dark/20"
+      className="relative py-12 sm:py-14 md:py-16 lg:py-24 xl:py-28 overflow-hidden bg-neutral-dark/20"
       style={{
         background:
           "linear-gradient(135deg, rgba(224, 197, 180, 0.2), rgba(199, 214, 217, 0.25), rgba(241, 215, 219, 0.3))",
@@ -65,15 +65,15 @@ export function About() {
           variants={staggerContainer}
           initial="initial"
           animate={isInView ? "animate" : "initial"}
-          className="max-w-6xl mx-auto space-y-12 sm:space-y-14 md:space-y-16"
+          className="max-w-6xl mx-auto space-y-8 sm:space-y-10 md:space-y-12 lg:space-y-16"
         >
-          <motion.div variants={fadeInUp} className="text-center space-y-4 sm:space-y-6 px-4">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground text-balance">
+          <motion.div variants={fadeInUp} className="text-center space-y-3 sm:space-y-4 md:space-y-6 px-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold text-foreground text-balance">
               Quién soy
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-16 items-center">
             <motion.div variants={slideInFromLeft} className="order-2 lg:order-1 px-4 sm:px-0">
               <div className="relative group max-w-md mx-auto lg:mx-0">
                 <div className="absolute -left-4 sm:-left-6 top-0 bottom-0 w-6 sm:w-8 bg-gradient-to-b from-brand-primary via-brand-primary/90 to-brand-primary/80 rounded-l-2xl sm:rounded-l-3xl shadow-2xl group-hover:shadow-3xl transition-all duration-500" />
@@ -85,19 +85,22 @@ export function About() {
               </div>
             </motion.div>
 
-            <motion.div variants={slideInFromRight} className="order-1 lg:order-2 space-y-5 sm:space-y-6 px-4 sm:px-0">
-              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+            <motion.div
+              variants={slideInFromRight}
+              className="order-1 lg:order-2 space-y-4 sm:space-y-5 md:space-y-6 px-4 sm:px-0"
+            >
+              <p className="text-sm sm:text-base md:text-base lg:text-lg text-muted-foreground leading-relaxed">
                 Soy la Dra. Ángela De Abreu, especialista en Neurofisiología Clínica con más de 10 años de experiencia
                 en hospitales de referencia.
               </p>
 
-              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+              <p className="text-sm sm:text-base md:text-base lg:text-lg text-muted-foreground leading-relaxed">
                 He acompañado a miles de pacientes en diagnósticos neurológicos, estudios de sueño y monitorización en
                 quirófano. Pero descubrí algo clave: los síntomas no mejoran solo con diagnósticos, sino entrenando el
                 cerebro día a día.
               </p>
 
-              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+              <p className="text-sm sm:text-base md:text-base lg:text-lg text-muted-foreground leading-relaxed">
                 Por eso nace <span className="font-semibold text-brand-primary">Cerebrando</span>: para enseñarte a usar
                 la neuroplasticidad a tu favor y crear la vida que mereces.
               </p>

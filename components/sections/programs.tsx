@@ -81,7 +81,7 @@ export function Programs() {
       </div>
 
       <div
-        className="py-20 lg:py-32 relative"
+        className="py-14 sm:py-16 md:py-20 lg:py-28 xl:py-32 relative"
         style={{
           background:
             "linear-gradient(135deg, rgba(199, 214, 217, 0.15), rgba(241, 215, 219, 0.2), rgba(224, 197, 180, 0.15))",
@@ -123,26 +123,29 @@ export function Programs() {
             variants={staggerContainer}
             initial="initial"
             animate={isInView ? "animate" : "initial"}
-            className="max-w-6xl mx-auto space-y-16"
+            className="max-w-6xl mx-auto space-y-10 sm:space-y-12 md:space-y-14 lg:space-y-16"
           >
             {/* Section header */}
-            <motion.div variants={fadeInUp} className="text-center space-y-6">
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-foreground text-balance">
+            <motion.div variants={fadeInUp} className="text-center space-y-4 sm:space-y-5 md:space-y-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold text-foreground text-balance">
                 Mis programas y productos
               </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed text-pretty">
+              <p className="text-base sm:text-lg md:text-xl lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed text-pretty">
                 Herramientas científicamente respaldadas para transformar tu bienestar neurológico
               </p>
             </motion.div>
 
-            <motion.div variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+            <motion.div
+              variants={staggerContainer}
+              className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-7 md:gap-8 lg:gap-10"
+            >
               {programs.map((program, index) => (
                 <motion.div
                   key={index}
                   variants={fadeInStagger}
                   whileHover={scaleOnHover.whileHover}
                   transition={scaleOnHover.transition}
-                  className={`group relative p-8 lg:p-10 rounded-3xl bg-white/80 backdrop-blur-sm border-2 ${program.borderColor} ${program.hoverBorder} transition-all duration-500 shadow-lg hover:shadow-2xl hover:-translate-y-2`}
+                  className={`group relative p-6 sm:p-7 md:p-8 lg:p-10 rounded-3xl bg-white/80 backdrop-blur-sm border-2 ${program.borderColor} ${program.hoverBorder} transition-all duration-500 shadow-lg hover:shadow-2xl hover:-translate-y-2`}
                 >
                   <div className="absolute top-6 right-6">
                     {program.status === "coming-soon" ? (
@@ -172,12 +175,14 @@ export function Programs() {
                   </div>
 
                   {/* Content */}
-                  <div className="space-y-4">
-                    <h3 className="text-2xl font-serif font-semibold text-foreground leading-tight group-hover:text-brand-primary transition-colors duration-300">
+                  <div className="space-y-3 sm:space-y-4">
+                    <h3 className="text-xl sm:text-xl md:text-2xl font-serif font-semibold text-foreground leading-tight group-hover:text-brand-primary transition-colors duration-300">
                       {program.title}
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed text-base">{program.description}</p>
-                    {program.details && <p className="text-sm text-brand-primary font-semibold">{program.details}</p>}
+                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{program.description}</p>
+                    {program.details && (
+                      <p className="text-xs sm:text-sm text-brand-primary font-semibold">{program.details}</p>
+                    )}
                   </div>
 
                   <div className="absolute bottom-8 right-8 opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:translate-x-1">
@@ -187,14 +192,14 @@ export function Programs() {
               ))}
             </motion.div>
 
-            <motion.div variants={fadeInStagger} className="text-center pt-8">
+            <motion.div variants={fadeInStagger} className="text-center pt-6 sm:pt-8">
               <Button
                 onClick={scrollToContact}
                 size="lg"
-                className="bg-[#BC782E] hover:bg-[#A66828] text-white px-10 py-6 rounded-full shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 text-lg font-semibold"
+                className="bg-[#BC782E] hover:bg-[#A66828] text-white px-8 sm:px-9 md:px-10 py-5 sm:py-5 md:py-6 rounded-full shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 text-base sm:text-base md:text-lg font-semibold"
               >
                 Descubre mis programas
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
             </motion.div>
           </motion.div>

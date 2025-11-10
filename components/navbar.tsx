@@ -136,17 +136,6 @@ export function Navbar() {
                 ))}
               </div>
 
-              {/* Desktop CTA and Theme Toggle */}
-              <div className="hidden lg:flex items-center space-x-4">
-                <ThemeToggle />
-                <Button
-                  onClick={() => scrollToSection("#contacto")}
-                  className="bg-brand-accent hover:bg-brand-accent/90 text-white"
-                >
-                  Empieza ahora
-                </Button>
-              </div>
-
               {/* Mobile Menu */}
               <div className="lg:hidden flex items-center space-x-2">
                 <ThemeToggle />
