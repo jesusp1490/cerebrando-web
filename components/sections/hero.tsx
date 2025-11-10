@@ -181,8 +181,8 @@ export function Hero() {
           preserveAspectRatio="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path d="M0,100 L0,50 Q360,0 720,50 T1440,50 L1440,100 Z" fill="rgb(241, 215, 219, 0.5)" />
-          <path d="M0,100 L0,60 Q360,10 720,60 T1440,60 L1440,100 Z" fill="rgb(241, 215, 219, 0.35)" opacity="0.6" />
+          <path d="M0,100 L0,50 Q360,0 720,50 T1440,50 L1440,100 Z" fill="rgb(241, 215, 219)" />
+          <path d="M0,100 L0,60 Q360,10 720,60 T1440,60 L1440,100 Z" fill="rgb(241, 215, 219)" opacity="0.7" />
         </svg>
       </div>
     </section>

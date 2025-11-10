@@ -13,20 +13,6 @@ export function Credibility() {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
 
-  const stats = [
-    {
-      number: "+13",
-      label: "AÑOS ESPECIALIZADA EN SALUD",
-    },
-    {
-      number: "+100",
-      label: "EMPRESAS ASESORADAS",
-    },
-    {
-      number: "+2800",
-      label: "ALUMNAS TRANSFORMADAS",
-    },
-  ]
 
   const credentials = [
     {
@@ -83,76 +69,6 @@ export function Credibility() {
 
   return (
     <>
-      <div className="relative h-40 bg-white">
-        <svg
-          className="absolute bottom-0 w-full h-40"
-          viewBox="0 0 1440 120"
-          preserveAspectRatio="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M0,0 L1440,120 L1440,120 L0,120 Z" fill="#C7D6D9" fillOpacity="0.9" />
-        </svg>
-      </div>
-
-      <section
-        className="py-24 lg:py-32 relative overflow-hidden"
-        style={{
-          background:
-            "linear-gradient(135deg, rgba(199, 214, 217, 0.9), rgba(199, 214, 217, 0.8), rgba(199, 214, 217, 0.9))",
-          boxShadow: "0 20px 60px rgba(0, 0, 0, 0.15)",
-        }}
-      >
-        <div className="absolute inset-0 opacity-25">
-          <div className="absolute top-10 left-10 w-80 h-80 rounded-full bg-white/30 blur-3xl animate-pulse" />
-          <div
-            className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-white/20 blur-3xl animate-pulse"
-            style={{ animationDelay: "1s" }}
-          />
-        </div>
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            ref={ref}
-            variants={staggerContainer}
-            initial="initial"
-            animate={isInView ? "animate" : "initial"}
-            className="grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-20"
-          >
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInStagger}
-                className="text-center space-y-6 group hover:scale-115 transition-transform duration-500"
-              >
-                <div
-                  className="text-7xl lg:text-9xl font-serif font-bold text-white transition-all duration-500"
-                  style={{
-                    textShadow: "0 8px 30px rgba(0, 0, 0, 0.3), 0 4px 15px rgba(0, 0, 0, 0.2)",
-                    filter: "drop-shadow(0 15px 40px rgba(0, 0, 0, 0.2))",
-                  }}
-                >
-                  {stat.number}
-                </div>
-                <div className="text-base lg:text-lg font-semibold text-white/95 tracking-wider uppercase">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      <div className="relative h-40" style={{ background: "rgba(199, 214, 217, 0.9)" }}>
-        <svg
-          className="absolute top-0 w-full h-40"
-          viewBox="0 0 1440 120"
-          preserveAspectRatio="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M0,120 L1440,0 L1440,0 L0,0 Z" fill="rgb(255, 255, 255)" />
-        </svg>
-      </div>
-
       <section id="credibilidad" className="py-20 lg:py-32 bg-neutral-dark/8">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div

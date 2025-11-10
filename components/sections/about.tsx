@@ -4,7 +4,6 @@ import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
 import { fadeInUp, staggerContainer, fadeInStagger, slideInFromLeft, slideInFromRight } from "@/lib/animations"
-import Image from "next/image"
 
 export function About() {
   const ref = useRef(null)
@@ -71,7 +70,7 @@ export function About() {
           preserveAspectRatio="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path d="M0,0 L0,60 Q360,120 720,60 T1440,60 L1440,0 Z" fill="rgb(255, 255, 255)" />
+          <path d="M0,0 L0,60 Q360,120 720,60 T1440,60 L1440,0 Z" fill="rgb(199, 214, 217)" />
         </svg>
       </div>
 
@@ -117,13 +116,9 @@ export function About() {
               <div className="relative group">
                 <div className="absolute -left-6 top-0 bottom-0 w-8 bg-gradient-to-b from-brand-primary via-brand-primary/90 to-brand-primary/80 rounded-l-3xl shadow-2xl group-hover:shadow-3xl transition-all duration-500" />
                 <div className="aspect-[4/5] rounded-3xl overflow-hidden bg-gradient-to-br from-brand-primary/25 to-brand-accent/20 border-4 border-brand-primary/40 ml-6 shadow-2xl group-hover:shadow-3xl group-hover:scale-105 transition-all duration-500">
-                  <Image
-                    src="/placeholders/doctor-portrait.jpg"
-                    alt="Dra. Ángela De Abreu - Especialista en Neurofisiología"
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
+                  <div className="w-full h-full bg-gradient-to-br from-neutral-light/80 to-brand-accent/30 flex items-center justify-center">
+                    <span className="text-neutral-dark/40 text-sm">Image placeholder</span>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -163,7 +158,7 @@ export function About() {
           preserveAspectRatio="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path d="M0,120 L0,60 Q360,0 720,60 T1440,60 L1440,120 Z" fill="rgb(255, 255, 255)" />
+          <path d="M0,120 L0,60 Q360,0 720,60 T1440,60 L1440,120 Z" fill="rgb(241, 215, 219)" />
         </svg>
       </div>
     </section>

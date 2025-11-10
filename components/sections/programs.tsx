@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Moon, Brain, Headphones, Sprout, ArrowRight } from "lucide-react"
 import { fadeInUp, staggerContainer, fadeInStagger, scaleOnHover } from "@/lib/animations"
-import Image from "next/image"
 
 export function Programs() {
   const ref = useRef(null)
@@ -65,60 +64,6 @@ export function Programs() {
 
   return (
     <>
-      <section className="py-20 lg:py-32 bg-gradient-to-br from-neutral-light/70 via-neutral-light/60 to-neutral-light/70 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-20 left-20 w-96 h-96 rounded-full bg-brand-primary/30 blur-3xl animate-pulse" />
-          <div
-            className="absolute bottom-20 right-20 w-96 h-96 rounded-full bg-brand-accent/20 blur-3xl animate-pulse"
-            style={{ animationDelay: "1.5s" }}
-          />
-        </div>
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            ref={ref}
-            variants={staggerContainer}
-            initial="initial"
-            animate={isInView ? "animate" : "initial"}
-            className="max-w-6xl mx-auto"
-          >
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-              {/* Content */}
-              <motion.div variants={fadeInStagger} className="space-y-8">
-                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-white drop-shadow-2xl text-balance">
-                  SERVICIOS
-                </h2>
-
-                <p className="text-xl text-white/95 leading-relaxed drop-shadow-lg">
-                  En Sanitaria Digital también te ofrecemos servicios de consultoría y desarrollo de proyectos. Desde la
-                  resolución de dudas estratégicas que pueden estar bloqueando tus avances en el negocio, hasta el
-                  diseño y puesta en marcha completa de un proyecto sanitario digital.
-                </p>
-
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="bg-white/10 backdrop-blur-sm border-3 border-white text-white hover:bg-white hover:text-neutral-light transition-all duration-500 shadow-xl hover:shadow-2xl hover:scale-110 px-8 py-6 text-lg rounded-full"
-                >
-                  QUIERO CONOCER LOS SERVICIOS
-                </Button>
-              </motion.div>
-
-              <motion.div variants={fadeInStagger} className="order-first lg:order-last">
-                <div className="aspect-[4/5] rounded-3xl overflow-hidden bg-white/20 border-4 border-white/40 shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-500">
-                  <Image
-                    src="/placeholders/doctor-portrait.jpg"
-                    alt="Servicios de Sanitaria Digital"
-                    fill
-                    className="object-cover hover:scale-110 transition-transform duration-700"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* Programs section */}
       <section
@@ -238,31 +183,6 @@ export function Programs() {
                 <ArrowRight className="ml-3 h-6 w-6" />
               </Button>
             </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="py-20 lg:py-32 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            animate={isInView ? "animate" : "initial"}
-            className="max-w-4xl mx-auto text-center space-y-8"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl sm:text-4xl font-serif font-bold text-neutral-light/80 text-balance"
-            >
-              MARCAS QUE HAN CONFIADO
-              <br />
-              EN NOSOTROS
-            </motion.h2>
-
-            <motion.p variants={fadeInStagger} className="text-lg text-muted-foreground leading-relaxed">
-              Tantos años dan para trabajar con muchas empresas, no me caben todas. Aquí algunos logos de empresas
-              destacadas con las que hemos trabajado.
-            </motion.p>
           </motion.div>
         </div>
       </section>
