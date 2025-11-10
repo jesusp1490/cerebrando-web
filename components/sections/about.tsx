@@ -3,26 +3,11 @@
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
-import { fadeInUp, staggerContainer, fadeInStagger, slideInFromLeft, slideInFromRight } from "@/lib/animations"
+import { fadeInUp, staggerContainer, slideInFromLeft, slideInFromRight } from "@/lib/animations"
 
 export function About() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
-
-  const steps = [
-    {
-      number: "01.",
-      text: "Sé cómo te sientes porque he estado en tu lugar.",
-    },
-    {
-      number: "02.",
-      text: "Sé lo que necesitas porque he vivido esa necesidad.",
-    },
-    {
-      number: "03.",
-      text: "Sé cómo puedo ayudarte porque ya he ayudado a otras a lograrlo.",
-    },
-  ]
 
   return (
     <section
@@ -82,32 +67,9 @@ export function About() {
           animate={isInView ? "animate" : "initial"}
           className="max-w-6xl mx-auto space-y-16"
         >
-          <motion.div variants={fadeInUp} className="text-center space-y-12">
-            <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Gracias a mi experiencia en clínica y en agencia, como emprendedora y después como empresaria, puedo decir
-              que:
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
-              {steps.map((step, index) => (
-                <motion.div key={index} variants={fadeInStagger} className="flex flex-col items-center space-y-6 group">
-                  <div className="relative">
-                    <div className="w-32 h-32 rounded-full bg-gradient-to-br from-neutral-light/90 to-neutral-light/70 flex items-center justify-center border-4 border-neutral-light/60 shadow-2xl group-hover:shadow-3xl group-hover:scale-110 transition-all duration-500">
-                      <span className="text-3xl font-serif font-bold text-foreground">{step.number}</span>
-                    </div>
-                    {index < steps.length - 1 && (
-                      <div className="hidden md:block absolute top-16 left-full w-full h-1 bg-gradient-to-r from-neutral-light/70 to-neutral-light/40 shadow-md" />
-                    )}
-                  </div>
-                  <p className="text-center text-lg text-muted-foreground leading-relaxed max-w-xs">{step.text}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
           <motion.div variants={fadeInUp} className="text-center space-y-6">
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-foreground text-balance">
-              ¿Y quién hay detrás de este proyecto?
+              ¿Quién soy?
             </h2>
           </motion.div>
 
@@ -125,26 +87,19 @@ export function About() {
 
             <motion.div variants={slideInFromRight} className="order-1 lg:order-2 space-y-6">
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Hola, soy <span className="font-semibold text-brand-accent">Esther Pérez</span> y desde hace más de 13
-                años, mi vida profesional está dedicada a los negocios de salud y al marketing sanitario.
+                Soy la Dra. Ángela De Abreu, especialista en Neurofisiología Clínica con más de 10 años de experiencia
+                en hospitales de referencia.
               </p>
 
               <p className="text-lg text-muted-foreground leading-relaxed">
-                En 2010 y casi sin experiencia, monté mi propia clínica, fue una etapa en la que aprendí muchísimo y
-                experimenté las luces y sombras que tiene el emprender con un negocio sanitario a pie de calle.
+                He acompañado a miles de pacientes en diagnósticos neurológicos, estudios de sueño y monitorización en
+                quirófano. Pero descubrí algo clave: los síntomas no mejoran solo con diagnósticos, sino entrenando el
+                cerebro día a día.
               </p>
 
               <p className="text-lg text-muted-foreground leading-relaxed">
-                En 2013 fundé mi agencia de marketing y publicidad con un área especializada en salud, que me ha
-                permitido trabajar con grandes marcas, grupos hospitalarios y decenas de clínicas Paralelamente fui
-                directora de marketing del Instituto de Medicina Reproductiva durante 7 años donde dirigí todo el
-                proceso de digitalización desde sus inicios.
-              </p>
-
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Y mi último proyecto es <span className="font-semibold text-brand-primary">Sanitaria Digital</span> la
-                escuela donde lanzamos al mercado a profesionales sanitarias que quieren crear su proyecto online o
-                impulsar su consulta a través de este canal.
+                Por eso nace <span className="font-semibold text-brand-primary">Cerebrando</span>: para enseñarte a usar
+                la neuroplasticidad a tu favor y crear la vida que mereces.
               </p>
             </motion.div>
           </div>
