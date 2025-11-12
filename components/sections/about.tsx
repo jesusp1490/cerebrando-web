@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
 import { fadeInUp, staggerContainer, slideInFromLeft, slideInFromRight } from "@/lib/animations"
+import Image from "next/image"
 
 export function About() {
   const ref = useRef(null)
@@ -77,10 +78,14 @@ export function About() {
             <motion.div variants={slideInFromLeft} className="order-2 lg:order-1 px-4 sm:px-0">
               <div className="relative group max-w-md mx-auto lg:mx-0">
                 <div className="absolute -left-4 sm:-left-6 top-0 bottom-0 w-6 sm:w-8 bg-gradient-to-b from-brand-primary via-brand-primary/90 to-brand-primary/80 rounded-l-2xl sm:rounded-l-3xl shadow-2xl group-hover:shadow-3xl transition-all duration-500" />
-                <div className="aspect-[4/5] rounded-2xl sm:rounded-3xl overflow-hidden bg-gradient-to-br from-brand-primary/25 to-brand-accent/20 border-3 sm:border-4 border-brand-primary/40 ml-4 sm:ml-6 shadow-2xl group-hover:shadow-3xl group-hover:scale-105 transition-all duration-500">
-                  <div className="w-full h-full bg-gradient-to-br from-neutral-light/80 to-brand-accent/30 flex items-center justify-center">
-                    <span className="text-neutral-dark/40 text-sm">Image placeholder</span>
-                  </div>
+                <div className="aspect-square rounded-2xl sm:rounded-3xl overflow-hidden bg-gradient-to-br from-brand-primary/25 to-brand-accent/20 border-3 sm:border-4 border-brand-primary/40 ml-4 sm:ml-6 shadow-2xl group-hover:shadow-3xl group-hover:scale-105 transition-all duration-500 flex items-center justify-center p-8 sm:p-12">
+                  <Image
+                    src="/Cerebrando_isotipo.png"
+                    alt="Cerebrando Brain"
+                    width={400}
+                    height={400}
+                    className="w-full h-full object-contain"
+                  />
                 </div>
               </div>
             </motion.div>

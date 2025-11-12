@@ -3,9 +3,9 @@
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
-import { Brain } from "lucide-react"
 import { fadeInUp } from "@/lib/animations"
 import { siteConfig } from "@/config/site"
+import Image from "next/image"
 
 export function Footer() {
   const ref = useRef(null)
@@ -23,9 +23,14 @@ export function Footer() {
         >
           {/* Logo and tagline */}
           <div className="text-center space-y-3">
-            <div className="flex items-center justify-center space-x-2">
-              <Brain className="h-6 w-6 text-brand-primary" />
-              <span className="text-xl font-serif font-bold text-foreground">Cerebrando</span>
+            <div className="flex items-center justify-center">
+              <Image
+                src="/Cerebrando_imagotipo.png"
+                alt="Cerebrando - Dra. Ángela De Abreu"
+                width={200}
+                height={120}
+                className="h-24 w-auto"
+              />
             </div>
 
             <p className="text-sm text-muted-foreground">Cerebremos el cambio, cerebremos la vida.</p>
@@ -34,8 +39,7 @@ export function Footer() {
           <div className="grid md:grid-cols-3 gap-6 text-center md:text-left items-start">
             {/* Doctor info */}
             <div className="space-y-1">
-              <p className="font-medium text-sm text-foreground">{siteConfig.doctor.name}</p>
-              <p className="text-xs text-muted-foreground">{siteConfig.doctor.specialty}</p>
+              <p className="font-medium text-sm text-foreground">Neurofisiología Clínica</p>
               <p className="text-xs text-muted-foreground">{siteConfig.doctor.experience} de experiencia</p>
             </div>
 

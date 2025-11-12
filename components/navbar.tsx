@@ -4,10 +4,10 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, Moon, Sun, Monitor } from "lucide-react"
-import { useTheme } from "next-themes"
+import { Menu } from "lucide-react"
 import { navigation } from "@/config/site"
 import { cn } from "@/lib/utils"
+import Image from "next/image"
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -15,7 +15,6 @@ export function Navbar() {
   const [lastScrollY, setLastScrollY] = useState(0)
   const [activeSection, setActiveSection] = useState("hero")
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const { theme, setTheme } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,35 +58,6 @@ export function Navbar() {
     setIsMobileMenuOpen(false)
   }
 
-  const ThemeToggle = () => (
-    <div className="flex items-center space-x-1 rounded-lg border p-1">
-      <Button
-        variant="ghost"
-        size="sm"
-        onClick={() => setTheme("light")}
-        className={cn("h-7 w-7 p-0", theme === "light" && "bg-brand-primary text-white")}
-      >
-        <Sun className="h-3 w-3" />
-      </Button>
-      <Button
-        variant="ghost"
-        size="sm"
-        onClick={() => setTheme("dark")}
-        className={cn("h-7 w-7 p-0", theme === "dark" && "bg-brand-primary text-white")}
-      >
-        <Moon className="h-3 w-3" />
-      </Button>
-      <Button
-        variant="ghost"
-        size="sm"
-        onClick={() => setTheme("system")}
-        className={cn("h-7 w-7 p-0", theme === "system" && "bg-brand-primary text-white")}
-      >
-        <Monitor className="h-3 w-3" />
-      </Button>
-    </div>
-  )
-
   return (
     <AnimatePresence>
       {isVisible && (
@@ -111,9 +81,16 @@ export function Navbar() {
               >
                 <button
                   onClick={() => scrollToSection("#hero")}
-                  className="text-2xl font-serif font-bold text-brand-primary hover:text-brand-accent transition-colors"
+                  className="flex items-center hover:opacity-80 transition-opacity"
                 >
-                  Cerebrando
+                  <Image
+                    src="/Cerebrando_logotipo.png"
+                    alt="Cerebrando"
+                    width={180}
+                    height={50}
+                    className="h-10 w-auto"
+                    priority
+                  />
                 </button>
               </motion.div>
 
@@ -136,9 +113,18 @@ export function Navbar() {
                 ))}
               </div>
 
+              {/* Desktop CTA */}
+              <div className="hidden lg:flex items-center space-x-4">
+                <Button
+                  onClick={() => scrollToSection("#contacto")}
+                  className="bg-brand-accent hover:bg-brand-accent/90 text-white"
+                >
+                  Empieza ahora
+                </Button>
+              </div>
+
               {/* Mobile Menu */}
               <div className="lg:hidden flex items-center space-x-2">
-                <ThemeToggle />
                 <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
                   <SheetTrigger asChild>
                     <Button variant="ghost" size="sm" className="p-2">
@@ -147,8 +133,16 @@ export function Navbar() {
                   </SheetTrigger>
                   <SheetContent side="right" className="w-80">
                     <div className="flex flex-col space-y-6 mt-8">
-                      <div className="text-2xl font-serif font-bold text-brand-primary">Cerebrando</div>
+                      {/* Mobile Menu Logo */}
+                      <Image
+                        src="/Cerebrando_logotipo.png"
+                        alt="Cerebrando"
+                        width={160}
+                        height={45}
+                        className="h-8 w-auto"
+                      />
 
+                      {/* Mobile Navigation */}
                       <nav className="flex flex-col space-y-4">
                         {navigation.map((item) => (
                           <button
@@ -164,6 +158,7 @@ export function Navbar() {
                         ))}
                       </nav>
 
+                      {/* Mobile CTA */}
                       <Button
                         onClick={() => scrollToSection("#contacto")}
                         className="bg-brand-accent hover:bg-brand-accent/90 text-white w-full"
