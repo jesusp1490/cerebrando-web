@@ -70,7 +70,7 @@ export function About() {
         >
           <motion.div variants={fadeInUp} className="text-center space-y-3 sm:space-y-4 md:space-y-6 px-4">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold text-foreground text-balance">
-              Quién soy
+              ¿Quién soy?
             </h2>
           </motion.div>
 
