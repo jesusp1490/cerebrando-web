@@ -5,9 +5,9 @@ export const siteConfig = {
   url: "https://cerebrando.com",
   ogImage: "/og-image.jpg",
   links: {
-    instagram: "https://instagram.com/cerebrando",
-    tiktok: "https://tiktok.com/@cerebrando",
-    youtube: "https://youtube.com/@cerebrando",
+    instagram: "https://instagram.com/cerebrando.doc",
+    tiktok: "https://tiktok.com/@cerebrando.doc",
+    youtube: "https://youtube.com/cerebrando.doc",
     email: "info@cerebrando.com",
   },
   doctor: {

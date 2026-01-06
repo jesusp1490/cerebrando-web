@@ -33,7 +33,6 @@ export function Contact() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate form submission (no backend)
     await new Promise((resolve) => setTimeout(resolve, 1500))
 
     console.log("Form submitted:", formData)
@@ -83,7 +82,7 @@ export function Contact() {
     {
       icon: InstagramIcon,
       title: "Instagram",
-      value: "@cerebrando",
+      value: "@cerebrando.doc",
       href: siteConfig.links.instagram,
       description: "Sígueme para contenido diario",
       color: "#E4405F",
@@ -91,7 +90,7 @@ export function Contact() {
     {
       icon: TikTokIcon,
       title: "TikTok",
-      value: "@cerebrando",
+      value: "@cerebrando.doc",
       href: siteConfig.links.tiktok,
       description: "Tips rápidos de neurociencia",
       color: "#000000",
@@ -99,7 +98,7 @@ export function Contact() {
     {
       icon: YouTubeIcon,
       title: "YouTube",
-      value: "@cerebrando",
+      value: "@cerebrando.doc",
       href: siteConfig.links.youtube,
       description: "Videos educativos completos",
       color: "#FF0000",
