@@ -25,6 +25,11 @@ export const metadata: Metadata = {
   generator: "v0.app",
   keywords: ["neurofisiología", "neuroplasticidad", "sueño", "estrés", "cerebro", "neurociencia"],
   authors: [{ name: "Dra. Ángela De Abreu" }],
+  icons: {
+    icon: "/favicon.ico",        
+    shortcut: "/favicon.ico",
+    apple: "/favicon.png", 
+  },
   openGraph: {
     title: "Cerebrando - Transforma tu mente con neurociencia",
     description: "Entrena tu cerebro para dormir mejor, reducir el estrés y potenciar tu neuroplasticidad.",
