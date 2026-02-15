@@ -154,7 +154,7 @@ export function Hero() {
               }}
             >
               <Image
-                src="/_MG_9549.jpg"
+                src="/Angela_1.jpeg"
                 alt="Dra. Ángela De Abreu"
                 fill
                 className="object-cover object-top"
