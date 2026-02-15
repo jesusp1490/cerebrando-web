@@ -78,13 +78,14 @@ export function About() {
             <motion.div variants={slideInFromLeft} className="order-2 lg:order-1 px-4 sm:px-0">
               <div className="relative group max-w-md mx-auto lg:mx-0">
                 <div className="absolute -left-4 sm:-left-6 top-0 bottom-0 w-6 sm:w-8 bg-gradient-to-b from-brand-primary via-brand-primary/90 to-brand-primary/80 rounded-l-2xl sm:rounded-l-3xl shadow-2xl group-hover:shadow-3xl transition-all duration-500" />
-                <div className="aspect-square rounded-2xl sm:rounded-2xl overflow-hidden bg-gradient-to-br from-brand-primary/25 to-brand-accent/20 border-3 sm:border-4 border-brand-primary/40 ml-4 sm:ml-6 shadow-2xl group-hover:shadow-3xl group-hover:scale-105 transition-all duration-500 flex items-center justify-center p-8 sm:p-12">
+                <div className="rounded-2xl overflow-hidden ml-4 sm:ml-6 shadow-2xl group-hover:shadow-3xl group-hover:scale-105 transition-all duration-500 w-full flex justify-center max-h-[380px] sm:max-h-[420px] md:max-h-[460px] lg:max-h-[560px]">
                   <Image
                     src="/Angela_3.jpeg"
-                    alt="Cerebrando Brain"
-                    fill
-                    className="object-scale-down object-top"
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    alt="Dra. Ángela De Abreu"
+                    width={900}
+                    height={1200}
+                    className="h-full w-auto"
+                    priority
                   />
                 </div>
               </div>
