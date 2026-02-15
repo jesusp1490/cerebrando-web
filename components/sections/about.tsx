@@ -80,7 +80,7 @@ export function About() {
                 <div className="absolute -left-4 sm:-left-6 top-0 bottom-0 w-6 sm:w-8 bg-gradient-to-b from-brand-primary via-brand-primary/90 to-brand-primary/80 rounded-l-2xl sm:rounded-l-3xl shadow-2xl group-hover:shadow-3xl transition-all duration-500" />
                 <div className="rounded-2xl overflow-hidden ml-4 sm:ml-6 shadow-2xl group-hover:shadow-3xl group-hover:scale-105 transition-all duration-500 w-full flex justify-center max-h-[380px] sm:max-h-[420px] md:max-h-[460px] lg:max-h-[560px]">
                   <Image
-                    src="/Angela_3.jpeg"
+                    src="/Angela_4.jpeg"
                     alt="Dra. Ángela De Abreu"
                     width={900}
                     height={1200}
