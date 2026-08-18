@@ -1,7 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Outfit } from "next/font/google"
-import { Playfair_Display } from "next/font/google"
+import { Outfit, Playfair_Display } from "next/font/google"
 import { Toaster } from "@/components/ui/toaster"
 import { Suspense } from "react"
 import "./globals.css"
@@ -19,29 +18,49 @@ const playfairDisplay = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: "Cerebrando - Transforma tu mente con neurociencia",
+  metadataBase: new URL("https://cerebrando.es"),
+
+  title: "Cerebrando | Dra. Ángela de Abreu",
+
   description:
-    "Especialista en Neurofisiología. Entrena tu cerebro para dormir mejor, reducir el estrés y potenciar tu neuroplasticidad con la Dra. Ángela De Abreu.",
-  generator: "v0.app",
-  keywords: ["neurofisiología", "neuroplasticidad", "sueño", "estrés", "cerebro", "neurociencia"],
-  authors: [{ name: "Dra. Ángela De Abreu" }],
-  icons: {
-    icon: "/favicon.ico",        
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png", 
+    "Cerebrando es el proyecto de la Dra. Ángela de Abreu, especialista en Neurofisiología Clínica, sobre sueño, estrés, neuroplasticidad y salud cerebral.",
+
+  authors: [
+    {
+      name: "Dra. Ángela de Abreu",
+    },
+  ],
+
+  creator: "Dra. Ángela de Abreu",
+  publisher: "Cerebrando",
+
+  alternates: {
+    canonical: "/",
   },
+
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+
   openGraph: {
-    title: "Cerebrando - Transforma tu mente con neurociencia",
-    description: "Entrena tu cerebro para dormir mejor, reducir el estrés y potenciar tu neuroplasticidad.",
+    title: "Cerebrando | Dra. Ángela de Abreu",
+    description:
+      "Neurociencia, sueño, estrés y neuroplasticidad con la Dra. Ángela de Abreu.",
+    url: "https://cerebrando.es/",
     type: "website",
     locale: "es_ES",
     siteName: "Cerebrando",
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "Cerebrando - Transforma tu mente con neurociencia",
-    description: "Entrena tu cerebro para dormir mejor, reducir el estrés y potenciar tu neuroplasticidad.",
+    title: "Cerebrando | Dra. Ángela de Abreu",
+    description:
+      "Neurociencia, sueño, estrés y neuroplasticidad con la Dra. Ángela de Abreu.",
   },
+
   robots: {
     index: true,
     follow: true,
@@ -61,44 +80,49 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es" className={`${outfit.variable} ${playfairDisplay.variable}`}>
+    <html
+      lang="es"
+      className={`${outfit.variable} ${playfairDisplay.variable}`}
+    >
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "MedicalOrganization",
-              name: "Cerebrando",
-              description:
-                "Especialista en Neurofisiología. Entrena tu cerebro para dormir mejor, reducir el estrés y potenciar tu neuroplasticidad.",
-              url: "https://cerebrando.com",
-              founder: {
-                "@type": "Person",
-                name: "Dra. Ángela De Abreu",
-                jobTitle: "Especialista en Neurofisiología Clínica",
-                worksFor: {
-                  "@type": "Organization",
-                  name: "HM Hospitales",
+              "@graph": [
+                {
+                  "@type": "WebSite",
+                  "@id": "https://cerebrando.es/#website",
+                  url: "https://cerebrando.es/",
+                  name: "Cerebrando",
+                  description:
+                    "Proyecto de la Dra. Ángela de Abreu sobre neurociencia, sueño, estrés, neuroplasticidad y salud cerebral.",
+                  inLanguage: "es-ES",
+                  publisher: {
+                    "@id": "https://cerebrando.es/#organization",
+                  },
                 },
-              },
-              medicalSpecialty: "Neurofisiología Clínica",
-              areaServed: "España",
-              contactPoint: {
-                "@type": "ContactPoint",
-                telephone: "",
-                contactType: "customer service",
-                email: "info@cerebrando.com",
-              },
-              sameAs: [
-                "https://instagram.com/cerebrando",
-                "https://tiktok.com/@cerebrando",
-                "https://youtube.com/@cerebrando",
+                {
+                  "@type": "Organization",
+                  "@id": "https://cerebrando.es/#organization",
+                  name: "Cerebrando",
+                  url: "https://cerebrando.es/",
+                  description:
+                    "Proyecto de divulgación y educación sobre neurociencia creado por la Dra. Ángela de Abreu.",
+                  founder: {
+                    "@type": "Person",
+                    "@id": "https://cerebrando.es/#angela-de-abreu",
+                    name: "Dra. Ángela de Abreu",
+                    jobTitle: "Especialista en Neurofisiología Clínica",
+                  },
+                },
               ],
             }),
           }}
         />
       </head>
+
       <body className="font-sans antialiased">
         <Suspense fallback={<div>Loading...</div>}>
           {children}
