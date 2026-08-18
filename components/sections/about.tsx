@@ -70,7 +70,7 @@ export function About() {
         >
           <motion.div variants={fadeInUp} className="text-center space-y-3 sm:space-y-4 md:space-y-6 px-4">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold text-foreground text-balance">
-              ¿Quién soy?
+              Conoce a la Dra. Ángela de Abreu
             </h2>
           </motion.div>
 
@@ -81,7 +81,7 @@ export function About() {
                 <div className="rounded-2xl overflow-hidden ml-4 sm:ml-6 shadow-2xl group-hover:shadow-3xl group-hover:scale-105 transition-all duration-500 w-full flex justify-center max-h-[380px] sm:max-h-[420px] md:max-h-[460px] lg:max-h-[560px]">
                   <Image
                     src="/Angela_4.jpeg"
-                    alt="Dra. Ángela De Abreu"
+                    alt="Dra. Ángela de Abreu, especialista en Neurofisiología Clínica"
                     width={900}
                     height={1200}
                     className="h-full w-auto"
@@ -96,19 +96,20 @@ export function About() {
               className="order-1 lg:order-2 space-y-4 sm:space-y-5 md:space-y-6 px-4 sm:px-0"
             >
               <p className="text-sm sm:text-base md:text-base lg:text-lg text-muted-foreground leading-relaxed">
-                Soy la Dra. Ángela De Abreu, especialista en Neurofisiología Clínica con más de 10 años de experiencia
+                Soy la Dra. Ángela de Abreu, especialista en Neurofisiología Clínica con más de 10 años de experiencia
                 en hospitales de referencia.
               </p>
 
               <p className="text-sm sm:text-base md:text-base lg:text-lg text-muted-foreground leading-relaxed">
                 He acompañado a miles de pacientes en diagnósticos neurológicos, estudios de sueño y monitorización en
-                quirófano. Pero descubrí algo clave: los síntomas no mejoran solo con diagnósticos, sino entrenando el
-                cerebro día a día.
+                quirófano. Pero descubrí algo clave: comprender un diagnóstico es solo una parte del proceso. Nuestros
+                hábitos diarios también influyen en cómo cuidamos el cerebro, el sueño y nuestro bienestar.
               </p>
 
               <p className="text-sm sm:text-base md:text-base lg:text-lg text-muted-foreground leading-relaxed">
-                Por eso nace <span className="font-semibold text-brand-primary">Cerebrando</span>: para enseñarte a usar
-                la neuroplasticidad a tu favor y crear la vida que mereces.
+                Por eso nace <span className="font-semibold text-brand-primary">Cerebrando</span>: un proyecto creado
+                para acercarte la neurociencia de forma práctica y ayudarte a comprender mejor cómo funciona tu cerebro
+                y cómo aprovechar su capacidad de adaptación.
               </p>
             </motion.div>
           </div>

@@ -100,7 +100,7 @@ export function Hero() {
               variants={fadeInStagger}
               className="text-sm sm:text-base md:text-base lg:text-lg xl:text-xl text-muted-foreground leading-relaxed text-pretty"
             >
-              Soy la Dra. Ángela De Abreu, especialista en Neurofisiología y creadora de Cerebrando: un espacio donde la
+              Soy la Dra. Ángela de Abreu, especialista en Neurofisiología y creadora de Cerebrando: un espacio donde la
               ciencia y la conciencia se unen para ayudarte a dormir mejor, reducir el estrés y potenciar tu
               neuroplasticidad.
             </motion.p>
@@ -155,7 +155,7 @@ export function Hero() {
             >
               <Image
                 src="/Angela_1.jpeg"
-                alt="Dra. Ángela De Abreu"
+                alt="Dra. Ángela de Abreu, creadora de Cerebrando"
                 fill
                 className="object-cover object-top"
                 sizes="(max-width: 768px) 100vw, 50vw"
